@@ -1,0 +1,22 @@
+{% extends "base_generic.html" %}
+{% block title %}
+  <title>Home | Michael Savych Blog</title>
+{% endblock %}
+{% block content %}
+  <h2>Home</h2>
+
+  <p>Welcome to my blog. I'm Michael, a web developer.</p>
+  
+  {% if article_list %}
+    <ul>
+      {% for article in article_list %}
+        <li>
+          <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+
+  {% else %}
+    <p>There are no articles yet.</p>
+  {% endif %}
+{% endblock %}

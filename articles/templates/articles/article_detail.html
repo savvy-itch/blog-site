@@ -1,0 +1,20 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <div class="article-wrapper">
+    <h1>{{ article.title }}</h1>
+    <p>{{ article.pub_date }}</p>
+    <p>Time to read:</p>
+    {% if article.tags.all %}
+    <ul>
+      {% for tag in article.tags.all %}
+        <li>
+          <a href="">{{ tag.name }}</a>
+        </li>
+      {% endfor %}
+    </ul>
+    {% endif %}
+  
+    {{ article.html_content|safe }}
+  </div>
+{% endblock %}

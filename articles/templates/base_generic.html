@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  {% block title %}
+  <title>Michael Savych Blog</title>
+  {% endblock %}
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li>Categories</li>
+        <li>About</li>
+      </ul>
+      <ul>
+        <li>Dark mode</li>
+        <li>Sound on/off</li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h1>Michael Savych Blog</h1>
+    {% block content %}{% endblock %}
+  </main>
+  <footer>
+    Footer
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,39 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  min-height: 100dvh;
+  background-color: darkslategray;
+  color: #fff;
+}
+
+h1 {
+  text-align: center;
+}
+
+.article-wrapper {
+  margin: 0 auto;
+  width: 62%;
+  min-width: 60ch;
+}
+
+.article-wrapper a {
+  color: white;
+}
+
+.article-wrapper li {
+  list-style-position: inside;
+}
+
+.article-wrapper code {
+  display: block;
+  background-color: #31363F;
+  padding: 2rem;
+  border-radius: 6px;
+  border: 1px solid white;
+}
+
