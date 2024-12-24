@@ -4,9 +4,10 @@
   <div class="article-wrapper">
     <h1>{{ article.title }}</h1>
     <p>{{ article.pub_date }}</p>
-    <p>Time to read:</p>
+    <p>⏱ <span id="time-to-read"></span> read</p>
+    
     {% if article.tags.all %}
-    <ul>
+    <ul class="topics-list">
       {% for tag in article.tags.all %}
         <li>
           <a href="">{{ tag.name }}</a>
@@ -18,3 +19,4 @@
     {{ article.html_content|safe }}
   </div>
 {% endblock %}
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Impedit illo asperiores voluptatibus iste tempore ad explicabo eos vitae nesciunt adipisci consectetur assumenda perspiciatis magni debitis, laudantium exercitationem ratione. Magni sint odio nobis commodi quaerat autem tempore earum ipsam, natus numquam, eaque perspiciatis maiores ut sequi et illum ducimus hic dolorum nihil? Consequatur velit ad harum aliquam veritatis! Laboriosam unde soluta minus dolore dolorum ut voluptates deserunt nihil, eius, dolorem qui quasi impedit nostrum iure architecto voluptate. Error qui recusandae eos! Dicta sit, soluta quia cumque, laudantium, quam consequatur enim minus saepe recusandae reiciendis nesciunt! Minus ipsum aliquid perspiciatis fuga illo magnam inventore ut quasi labore? Doloribus perferendis voluptate suscipit consequuntur minus tenetur illo nesciunt dolores consequatur, iste delectus deserunt exercitationem, porro quia dolorum laudantium libero obcaecati officia veritatis possimus! Neque amet hic asperiores sunt vitae voluptas ratione sequi quis eum cum! Laboriosam quaerat ipsam, voluptates perferendis laudantium veniam quidem similique odit tempora voluptatibus rerum harum dolore assumenda, nulla, expedita quas temporibus esse id quis. Velit pariatur, veritatis dolore eos et soluta eius nulla magni sapiente id quibusdam sit voluptas assumenda fugit tempora, qui quas neque commodi in recusandae, voluptates debitis perspiciatis nobis. Eveniet nesciunt sit aperiam quo eum unde vel reiciendis, iure soluta quos possimus impedit voluptas recusandae repellat repellendus est. Delectus, eos tempore minus laboriosam numquam quam error at sit temporibus, ipsum dignissimos repudiandae commodi. Quaerat totam nulla ipsam illum nihil, rerum fugiat dicta. Suscipit consequuntur expedita maxime tempore odio magni itaque debitis quia ducimus, quos, similique quasi saepe labore pariatur repellat atque quidem quas laborum! Natus, repudiandae nobis placeat expedita dolorum provident molestias ut necessitatibus, aut quae officiis aperiam beatae pariatur labore unde et, sint impedit architecto! Repudiandae qui, alias fuga debitis rerum voluptatibus assumenda dolorem inventore pariatur atque soluta dignissimos veniam esse porro enim error blanditiis corrupti, distinctio commodi accusantium quia? Officiis provident consequuntur obcaecati sapiente excepturi quisquam non sint delectus facere voluptate quo odio, quae saepe atque tempore dignissimos corrupti accusantium voluptatibus quos quibusdam eius, quaerat tenetur! Possimus dolorem soluta incidunt quo non praesentium reprehenderit illo, laudantium quis ipsa corrupti esse nemo, quas similique dolor voluptatum expedita! Placeat veritatis nihil, architecto delectus impedit doloribus exercitationem rerum officia necessitatibus cumque possimus blanditiis ipsum omnis repellat in expedita facere obcaecati. Iusto sunt unde omnis saepe! Debitis labore laudantium, voluptatem eveniet explicabo provident tenetur quisquam quia, odit, autem ratione. Asperiores inventore ullam cupiditate, assumenda voluptatibus error omnis sunt nemo!</p>

@@ -9,12 +9,17 @@
   {% endblock %}
   {% load static %}
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+  <script src="{% static 'js/main.js' %}" defer></script>
+  <script src="{% static 'js/forms.js' %}" defer></script>
 </head>
 
 <body>
-  <header>
+  <header class="header">
     <nav>
       <ul>
+        <li>
+          <a href="index.html">Home</a>
+        </li>
         <li>Categories</li>
         <li>About</li>
       </ul>
@@ -24,13 +29,30 @@
       </ul>
     </nav>
   </header>
+
+  <aside class="sidebar">
+    {% if tag_list %}
+    <form action="" method="post" id="filters-form">
+      {% csrf_token %}
+      {% for tag in tag_list %}
+        <label for="{{ tag.name }}">
+          {{ tag.name }}
+          <input type="checkbox" name="tag-filter" id="{{ tag.name }}" class="filter-checkbox" value="{{ tag.name }}"
+            {% if tag.name in filters %}checked{% endif %}
+          />
+        </label>
+      {% endfor %}
+    </form>
+    {% endif %}
+  </aside>
+  
   <main>
-    <h1>Michael Savych Blog</h1>
     {% block content %}{% endblock %}
   </main>
   <footer>
     Footer
   </footer>
+  {% block script %}{% endblock %}
 </body>
 
 </html>

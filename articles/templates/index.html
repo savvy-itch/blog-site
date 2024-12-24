@@ -1,22 +1,43 @@
 {% extends "base_generic.html" %}
 {% block title %}
-  <title>Home | Michael Savych Blog</title>
+<title>Home | Michael Savych Blog</title>
 {% endblock %}
 {% block content %}
-  <h2>Home</h2>
+<h2>Home</h2>
 
-  <p>Welcome to my blog. I'm Michael, a web developer.</p>
-  
-  {% if article_list %}
-    <ul>
-      {% for article in article_list %}
-        <li>
-          <a href="{{ article.get_absolute_url }}">{{ article.title }}</a>
-        </li>
+<p>Welcome to my blog. I'm Michael, a web developer.</p>
+
+{% if articles %}
+  {% if filters %}
+    <ul class="applied-filters">
+      {% for filter in filters %}
+      <li>
+        <button>{{ filter }} X</button>
+      </li>
       {% endfor %}
     </ul>
-
-  {% else %}
-    <p>There are no articles yet.</p>
+    <div>
+      <p>Found <span>{{ num_articles }}</span> article{{ articles|pluralize }}</p>
+    </div>
   {% endif %}
+<section class="articles-section">
+  {% for article in articles %}
+  <div class="article-card">
+    <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
+      {% if article.tags.all %}
+      <ul class="topics-list">
+        {% for tag in article.tags.all %}
+        <li>
+          <button class="tag-btn">{{ tag.name }}</button>
+        </li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+  </div>
+  {% endfor %}
+</section>
+
+{% else %}
+<p>There are no articles yet.</p>
+{% endif %}
 {% endblock %}

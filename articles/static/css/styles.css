@@ -7,22 +7,48 @@
 
 body {
   min-height: 100dvh;
-  background-color: darkslategray;
+  background-color: #213555;
   color: #fff;
+}
+
+a {
+  color: white;
+}
+
+.header {
+  padding: 1rem 2rem;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 15px;
+  align-items: center;
 }
 
 h1 {
   text-align: center;
 }
 
+.sidebar label {
+  display: block;
+  width: fit-content;
+}
+
+.sidebar label:hover {
+  cursor: pointer;
+}
+
 .article-wrapper {
   margin: 0 auto;
   width: 62%;
   min-width: 60ch;
-}
-
-.article-wrapper a {
-  color: white;
 }
 
 .article-wrapper li {
@@ -37,3 +63,67 @@ h1 {
   border: 1px solid white;
 }
 
+.topics-list {
+  display: flex;
+  list-style: none;
+  gap: 1rem;
+  margin: 1rem 0;
+}
+
+.article-wrapper table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.article-wrapper th,
+.article-wrapper td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.article-wrapper p {
+  margin: 1rem 0;
+}
+
+.article-card {
+  border: 1px solid white;
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.article-card .tag-btn:hover {
+  cursor: pointer;
+}
+
+.articles-section {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.article-card {
+  width: 30vw;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.article-card-heading {
+  font-size: 1.6rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.article-card-heading:hover {
+  text-decoration: underline;
+}
+
+.tag-btn {
+  padding: 5px;
+  border-radius: 20px;
+}
+
+.applied-filters {
+  display: flex;
+  gap: 20px;
+}
