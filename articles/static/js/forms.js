@@ -1,5 +1,6 @@
 const filtersForm = document.getElementById('filters-form');
 const filterCheckboxes = filtersForm.querySelectorAll('.filter-checkbox');
+const appliedFilterBtns = document.querySelectorAll('.applied-filter-btn');
 const articleTagBtns = document.querySelectorAll('.tag-btn');
 const appliedFilters = new Set();
 
@@ -10,13 +11,21 @@ document.addEventListener('DOMContentLoaded', () => {
       appliedFilters.add(checkbox.value);
     }
   });
+
+  appliedFilterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      appliedFilters.delete(btn.value);
+      window.location.href = updateURL();
+    });
+  });
+
   articleTagBtns.forEach(btn => {
     btn.addEventListener('click', () => {
       appliedFilters.clear();
       appliedFilters.add(btn.textContent);
       window.location.href = updateURL();
     });
-  })
+  });
 });
 
 function updateFilter(checkbox) {

@@ -16,6 +16,7 @@ class Tag(models.Model):
     return self.name
 
   class Meta:
+    ordering = ['name']
     constraints = [
       UniqueConstraint(
         Lower('name'),
@@ -32,9 +33,17 @@ class Article(models.Model):
 
   def html_content(self):
     return markdown.markdown(self.content, extensions=['extra', 'fenced_code'])
+  
+  def display_tags(self):
+    return ', '.join(tag.name for tag in self.tags.all())
+  
+  display_tags.short_description = 'Tags'
 
   def get_absolute_url(self):
     return reverse('article-detail', args=[str(self.id)])
 
   def __str__(self):
     return self.title
+  
+  class Meta:
+    ordering = ['pub_date']

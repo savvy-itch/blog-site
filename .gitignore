@@ -1,4 +1,6 @@
 .env
 todo.txt
 __pycache__/
+articles/__pycache__/
+blog/__pycache__/
 examples.md

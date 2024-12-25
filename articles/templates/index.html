@@ -7,37 +7,59 @@
 
 <p>Welcome to my blog. I'm Michael, a web developer.</p>
 
-{% if articles %}
+
+{% if page_obj %}
   {% if filters %}
-    <ul class="applied-filters">
-      {% for filter in filters %}
+  <ul class="applied-filters">
+    {% for filter in filters %}
+    <li>
+      <button class="applied-filter-btn" value="{{ filter }}">{{ filter }} X</button>
+    </li>
+    {% endfor %}
+  </ul>
+  <div>
+    <p>Found <span>{{ num_articles }}</span> article{{ articles|pluralize }}</p>
+  </div>
+  {% endif %}
+
+<section class="articles-section">
+
+  {% for article in page_obj %}
+  <div class="article-card">
+    <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
+    {% if article.tags.all %}
+    <ul class="topics-list">
+      {% for tag in article.tags.all %}
       <li>
-        <button>{{ filter }} X</button>
+        <button class="tag-btn">{{ tag.name }}</button>
       </li>
       {% endfor %}
     </ul>
-    <div>
-      <p>Found <span>{{ num_articles }}</span> article{{ articles|pluralize }}</p>
-    </div>
-  {% endif %}
-<section class="articles-section">
-  {% for article in articles %}
-  <div class="article-card">
-    <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
-      {% if article.tags.all %}
-      <ul class="topics-list">
-        {% for tag in article.tags.all %}
-        <li>
-          <button class="tag-btn">{{ tag.name }}</button>
-        </li>
-        {% endfor %}
-      </ul>
-      {% endif %}
+    {% endif %}
   </div>
   {% endfor %}
 </section>
 
 {% else %}
-<p>There are no articles yet.</p>
+  <p>There are no articles yet.</p>
 {% endif %}
+
+<div class="pagination">
+  <span class="step-links">
+    {% if page_obj.has_previous %}
+    <a href="?page=1{{ filters_url_params }}">&laquo; first</a>
+    <a href="?page={{ page_obj.previous_page_number }}{{ filters_url_params }}">previous</a>
+    {% endif %}
+
+    <span class="current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+    </span>
+
+    {% if page_obj.has_next %}
+    <a href="?page={{ page_obj.next_page_number }}{{ filters_url_params }}">next</a>
+    <a href="?page={{ page_obj.paginator.num_pages }}{{ filters_url_params }}">last &raquo;</a>
+    {% endif %}
+  </span>
+</div>
+
 {% endblock %}
