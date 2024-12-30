@@ -3,7 +3,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
-from django.core.validators import MinLengthValidator, MinValueValidator
+from django.core.validators import MinLengthValidator
 
 class Tag(models.Model):
   name = models.CharField(
@@ -47,3 +47,9 @@ class Article(models.Model):
   
   class Meta:
     ordering = ['pub_date']
+
+class SubscriberEmail(models.Model):
+  email = models.EmailField(validators=[MinLengthValidator(6)], max_length=200, unique=True)
+
+  def __str__(self):
+    return self.email

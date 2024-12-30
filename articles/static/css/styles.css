@@ -127,3 +127,11 @@ h1 {
   display: flex;
   gap: 20px;
 }
+
+.success-msg {
+  color: green;
+}
+
+.error-msg {
+  color: red;
+}

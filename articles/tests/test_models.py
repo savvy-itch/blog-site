@@ -19,10 +19,7 @@ class TagModelTest(TestCase):
 class ArticleModelTest(TestCase):
   @classmethod
   def setUpTestData(cls):
-    # tag = Tag.objects.create(name='Python')
-    # content = '# Test article heading ## test article subheading'
     Article.objects.create(title='Test article', pub_date='2024-12-24')
-    # article.tags.set(tag)
   
   def test_title_label(self):
     article = Article.objects.get(id=1)

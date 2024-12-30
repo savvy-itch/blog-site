@@ -50,7 +50,12 @@
     {% block content %}{% endblock %}
   </main>
   <footer>
-    Footer
+    <form method="post" id="subscribe-form">
+      {% csrf_token %}
+      {{ email_form }}
+      <p id="res-msg"></p>
+      <input type="submit" value="Submit" />
+    </form>
   </footer>
   {% block script %}{% endblock %}
 </body>
