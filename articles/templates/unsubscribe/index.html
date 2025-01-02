@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unsubscribe | Michael Savych blog</title>
+</head>
+<body>
+  {% if success_msg %}
+    <h1 style="color: green">{{ success_msg }}</h1>
+    <p>You can now close this tab.</p>
+  {% else %}
+    <h1 style="color: red">{{ error_msg }}</h1>
+    <h2>Error status code: {{ status_code }}</h2>
+  {% endif %}
+
+</body>
+</html>

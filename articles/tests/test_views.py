@@ -5,6 +5,9 @@ from django.urls import reverse
 from http import HTTPStatus
 from articles.email import send_email_notification
 from django.core import mail
+from articles.email import create_unsubscribe_link
+from datetime import timedelta
+from freezegun import freeze_time
 
 class FilteredArticlesTest(TestCase):
   @classmethod
@@ -104,3 +107,31 @@ class SubscribeToEmailNotification(TestCase):
     self.assertEqual(len(mail.outbox), 1)
     self.assertEqual(mail.outbox[0].subject, 'New article just published')
     self.assertEqual(mail.outbox[0].body, article.title)
+
+class UnsubscribeFromNotifications(TestCase):
+  def test_unsubscribe_with_valid_token(self):
+    recipient_email = SubscriberEmail.objects.create(email='test@mail.com')
+    unsubscribe_link = f'{create_unsubscribe_link(recipient_email)}'
+    response = self.client.get(unsubscribe_link)
+    self.assertEqual(response.status_code, 200)
+    self.assertFalse(SubscriberEmail.objects.filter(email='test@mail.com').exists())
+    self.assertEqual(response.context['success_msg'], 'You have successfully unsubscribed.')
+  
+  def test_unsubscribe_with_expired_token(self):
+    recipient_email = SubscriberEmail.objects.create(email='test@mail.com')
+    unsubscribe_link = f'{create_unsubscribe_link(recipient_email)}'
+    
+    with freeze_time() as frozen_time:
+      frozen_time.tick(delta=timedelta(days=3, seconds=1))
+
+      response = self.client.get(unsubscribe_link)
+      self.assertEqual(response.status_code, 400)
+      self.assertTrue(SubscriberEmail.objects.filter(email='test@mail.com').exists())
+      self.assertEqual(response.context['error_msg'], 'Unsubscribe link has been expired.')
+
+  def test_unsubscribe_invalid_email(self):
+    unsubscribe_link = f'{create_unsubscribe_link('invalid@mail.com')}'
+    response = self.client.get(unsubscribe_link)
+    self.assertEqual(response.status_code, 400)
+    self.assertFalse(SubscriberEmail.objects.filter(email='invalid@mail.com').exists())
+    self.assertEqual(response.context['error_msg'], 'Email not found.')
