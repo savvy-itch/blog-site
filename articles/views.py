@@ -8,6 +8,7 @@ from django.http import JsonResponse
 from http import HTTPStatus
 from django.core.signing import TimestampSigner, SignatureExpired
 from django.shortcuts import get_object_or_404
+from django.db.models import Count, Q
 
 class ArticleListView(generic.ListView):
   model = Article
@@ -15,6 +16,25 @@ class ArticleListView(generic.ListView):
 
 class ArticleDetailView(generic.DetailView):
   model = Article
+
+  def get_context_data(self, **kwargs):
+    context = super().get_context_data(**kwargs)
+    current_article = self.object
+    similar_articles = []
+
+    current_tags = current_article.tags.values_list('id', flat=True)
+
+    similar_articles = (
+      # get articles with any of the same tags
+      Article.objects.filter(tags__in=current_tags)
+      .exclude(id=current_article.id)
+      # count how many matching tags articles have
+      .annotate(tag_count=Count('tags', filter=Q(tags__in=current_tags)))
+      .order_by('-tag_count')[:3]
+    )
+
+    context["similar_articles"] = similar_articles
+    return context
 
 class TagListView(generic.ListView):
   model = Tag

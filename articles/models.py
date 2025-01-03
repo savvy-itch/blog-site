@@ -4,6 +4,7 @@ from django.urls import reverse
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from django.core.validators import MinLengthValidator
+from markdown.extensions.codehilite import CodeHiliteExtension
 
 class Tag(models.Model):
   name = models.CharField(
@@ -32,7 +33,7 @@ class Article(models.Model):
   tags = models.ManyToManyField(Tag, help_text="Select tags for this article")
 
   def html_content(self):
-    return markdown.markdown(self.content, extensions=['extra', 'fenced_code'])
+    return markdown.markdown(self.content, extensions=['extra', 'fenced_code', 'codehilite'])
   
   def display_tags(self):
     return ', '.join(tag.name for tag in self.tags.all())

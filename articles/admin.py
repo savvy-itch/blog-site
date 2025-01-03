@@ -8,8 +8,8 @@ class ArticleAdmin(admin.ModelAdmin):
   list_filter = ('tags',)
 
   def save_model(self, request, obj, form, change):
+    super().save_model(request, obj, form, change)
     if not change:
-      super().save_model(request, obj, form, change)
       send_email_notification(obj.title, obj.get_absolute_url)
 
 admin.site.register(Tag)

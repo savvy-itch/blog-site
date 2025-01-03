@@ -91,7 +91,7 @@ h1 {
   border-radius: 6px;
 }
 
-.article-card .tag-btn:hover {
+.tag-btn:hover {
   cursor: pointer;
 }
 
@@ -134,4 +134,10 @@ h1 {
 
 .error-msg {
   color: red;
+}
+
+/* similar articles */
+.similar-articles {
+  display: flex;
+  gap: 1rem;
 }
