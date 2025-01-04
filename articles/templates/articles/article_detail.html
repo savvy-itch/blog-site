@@ -4,6 +4,17 @@
 <title>{{ article.title }} | Michael Savych Blog</title>
 {% endblock %}
 
+{% block extra_scripts %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
+<script>
+  const clipboardIconPath = "{% static 'images/clipboard-icon.svg' %}";
+  const checkIconPath = "{% static 'images/check.svg' %}";
+  const xIconPath = "{% static 'images/x.svg' %}";
+</script>
+<script src="{% static 'js/copyToClipboard.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
   <div class="article-wrapper">
     <h1>{{ article.title }}</h1>

@@ -1,0 +1,76 @@
+.article-wrapper {
+  margin: 0 auto;
+  width: 62%;
+  min-width: 60ch;
+}
+
+.article-wrapper li {
+  list-style-position: inside;
+}
+
+.article-wrapper code {
+  display: block;
+  background-color: #31363F;
+  padding: 1.5rem;
+  border-radius: 6px;
+  border: 1px solid white;
+}
+
+.article-wrapper table {
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+}
+
+.article-wrapper th,
+.article-wrapper td {
+  border: 1px solid white;
+  padding: 5px;
+}
+
+.article-wrapper p {
+  margin: 1rem 0;
+}
+
+.code-block {
+  position: relative;
+}
+
+.copy-to-clipboard-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  border-radius: 5px;
+  padding: 4px;
+  transition: background-color .1s;
+}
+
+.copy-to-clipboard-btn:hover {
+  cursor: pointer;
+  background-color: hsl(219, 13%, 32%);
+}
+
+.copy-to-clipboard-btn img {
+  width: 18px;
+  height: 18px;
+  display: none;
+}
+
+.copy-to-clipboard-icon {
+  filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
+  transition: transform .1s;
+}
+
+.copy-to-clipboard-btn:hover .copy-to-clipboard-icon {
+  filter: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
+}
+
+.copy-to-clipboard-btn .show {
+  display: block;
+}
+
+.similar-articles {
+  display: flex;
+  gap: 1rem;
+}

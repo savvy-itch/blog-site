@@ -7,7 +7,7 @@
 
 body {
   min-height: 100dvh;
-  background-color: #213555;
+  background-color: hsl(231 28% 15% / 1);
   color: #fff;
 }
 
@@ -45,43 +45,10 @@ h1 {
   cursor: pointer;
 }
 
-.article-wrapper {
-  margin: 0 auto;
-  width: 62%;
-  min-width: 60ch;
-}
-
-.article-wrapper li {
-  list-style-position: inside;
-}
-
-.article-wrapper code {
-  display: block;
-  background-color: #31363F;
-  padding: 2rem;
-  border-radius: 6px;
-  border: 1px solid white;
-}
-
 .topics-list {
   display: flex;
   list-style: none;
   gap: 1rem;
-  margin: 1rem 0;
-}
-
-.article-wrapper table {
-  border-collapse: collapse;
-  margin: 1.5rem 0;
-}
-
-.article-wrapper th,
-.article-wrapper td {
-  border: 1px solid white;
-  padding: 5px;
-}
-
-.article-wrapper p {
   margin: 1rem 0;
 }
 
@@ -134,10 +101,4 @@ h1 {
 
 .error-msg {
   color: red;
-}
-
-/* similar articles */
-.similar-articles {
-  display: flex;
-  gap: 1rem;
 }
