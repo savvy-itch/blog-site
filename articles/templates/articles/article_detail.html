@@ -32,27 +32,28 @@
     {% endif %}
   
     {{ article.html_content|safe }}
+    
+    {% if similar_articles %}
+    <section>
+      <h2>You may also find these articles interesting:</h2>
+      <div class="similar-articles">
+        {% for article in similar_articles %}
+        <article class="article-card">
+          <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
+          {% if article.tags.all %}
+          <ul class="topics-list">
+            {% for tag in article.tags.all %}
+            <li>
+              <button class="tag-btn">{{ tag.name }}</button>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </article>
+        {% endfor %}
+      </div>
+    </section>
+    {% endif %}
   </div>
 
-  {% if similar_articles %}
-  <section>
-    <h2>You may also find these articles interesting:</h2>
-    <div class="similar-articles">
-      {% for article in similar_articles %}
-      <article class="article-card">
-        <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
-        {% if article.tags.all %}
-        <ul class="topics-list">
-          {% for tag in article.tags.all %}
-          <li>
-            <button class="tag-btn">{{ tag.name }}</button>
-          </li>
-          {% endfor %}
-        </ul>
-        {% endif %}
-      </article>
-      {% endfor %}
-    </div>
-  </section>
-  {% endif %}
 {% endblock %}

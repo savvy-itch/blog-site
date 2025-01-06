@@ -1,0 +1,52 @@
+.articles-section {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 350px));
+  gap: 1.5rem;
+}
+
+.articles-content-wrapper {
+  padding-left: 2rem;
+}
+
+.applied-filters {
+  display: flex;
+  gap: 20px;
+}
+
+/* =========== Pagination ============= */
+
+.pagination {
+  --page-btn-bg: hsl(212, 30%, 26%);
+
+  width: fit-content;
+  display: flex;
+  gap: 3px;
+  margin: 3rem auto;
+  font-weight: bold;
+}
+
+.pagination a {
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.page-btn,
+.current-page,
+.inbetween-pages {
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+}
+
+.page-btn,
+.current-page {
+  background-color: var(--page-btn-bg);
+}
+
+.page-btn {
+  border: 1px solid hsl(0, 0%, 63%);
+}
+
+.current-page {
+  border: 1px solid white;
+}

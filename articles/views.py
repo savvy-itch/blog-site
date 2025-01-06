@@ -10,9 +10,9 @@ from django.core.signing import TimestampSigner, SignatureExpired
 from django.shortcuts import get_object_or_404
 from django.db.models import Count, Q
 
-class ArticleListView(generic.ListView):
-  model = Article
-  template_name = 'index.html'
+# class ArticleListView(generic.ListView):
+#   model = Article
+#   template_name = 'index.html'
 
 class ArticleDetailView(generic.DetailView):
   model = Article
@@ -47,22 +47,20 @@ def filtered_articles(request):
   else:
     articles = Article.objects.all()
   num_articles = articles.count()
-  paginator = Paginator(articles, 2)
+  paginator = Paginator(articles, 6)
   page_number = request.GET.get('page')
   page_obj = paginator.get_page(page_number)
   filters_url_params = ''
   for filter in filters:
     filters_url_params += f"&tags={filter}"
   
-  mail_list = SubscriberEmail.objects.all()
-  print(mail_list)
-  
   return render(request, 'index.html', {
     'articles': articles, 
     'num_articles': num_articles, 
     'filters': filters, 
-    'filters_url_params': filters_url_params, 
-    'page_obj': page_obj
+    'filters_url_params': filters_url_params,
+    'page_obj': page_obj,
+    'display_invisible_next_pages': page_obj.number < page_obj.paginator.num_pages - 2
     })
 
 def subscribe_to_email_notification(request):

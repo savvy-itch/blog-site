@@ -8,6 +8,7 @@
   <title>Michael Savych Blog</title>
   {% endblock %}
   {% load static %}
+  <link rel="stylesheet" href="{% static 'css/globals.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
   <script src="{% static 'js/main.js' %}" defer></script>
@@ -21,43 +22,52 @@
     <nav>
       <ul>
         <li>
+          <img src="https://placehold.co/40x40" alt="logo image">
+        </li>
+        <li>
           <a href="/">Home</a>
         </li>
-        <li>Categories</li>
-        <li>About</li>
+        <li>
+          <a href="#">About</a>
+        </li>
       </ul>
-      <ul>
-        <li>Dark mode</li>
-        <li>Sound on/off</li>
-      </ul>
+      <div>
+        <select data-theme-picker name="themepicker" id="color-theme-selector">
+          <option value="light"><img src="{% static 'images/sun.svg' %}" alt="light scheme icon"> Light</option>
+          <option value="dark"><img src="{% static 'images/moon.svg' %}" alt="dark scheme icon"> Dark</option>
+          <option value="system"><img src="{% static 'images/system.svg' %}" alt="system scheme icon"> System</option>
+        </select>
+        <button>Sound on/off</button>
+      </div>
     </nav>
   </header>
 
-  <aside class="sidebar">
-    {% if tag_list %}
-    <form action="" method="post" id="filters-form">
-      {% csrf_token %}
-      {% for tag in tag_list %}
+  <main class="main-wrapper">
+    <aside class="sidebar">
+      <h4 class="sidebar-heading">Topics</h4>
+      {% if tag_list %}
+      <form action="" method="post" id="filters-form" class="filters-form">
+        {% csrf_token %}
+        {% for tag in tag_list %}
         <label for="{{ tag.name }}">
+          <input type="checkbox" name="tag-filter" id="{{ tag.name }}" class="filter-checkbox" value="{{ tag.name }}" {% if tag.name in filters %}checked{% endif %} />
           {{ tag.name }}
-          <input type="checkbox" name="tag-filter" id="{{ tag.name }}" class="filter-checkbox" value="{{ tag.name }}"
-            {% if tag.name in filters %}checked{% endif %}
-          />
         </label>
-      {% endfor %}
-    </form>
-    {% endif %}
-  </aside>
-  
-  <main>
+        {% endfor %}
+      </form>
+      {% endif %}
+    </aside>
+
     {% block content %}{% endblock %}
   </main>
-  <footer>
-    <form method="post" id="subscribe-form">
+  <footer class="footer">
+    <h3>Want to get notified when I publish a new article?</h3>
+    <!-- <p>Subscribe to a newsletter!</p> -->
+    <form method="post" id="subscribe-form" class="subscribe-form">
       {% csrf_token %}
       {{ email_form }}
+      <input type="submit" value="Subscribe" />
       <p id="res-msg"></p>
-      <input type="submit" value="Submit" />
     </form>
   </footer>
   {% block script %}{% endblock %}

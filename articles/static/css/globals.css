@@ -1,0 +1,76 @@
+:root {
+  --light-text: black;
+  --dim_text: gray;
+  --dimmer-text: hsl(0, 0%, 30%);
+  --highlight-color: hsl(348, 53%, 47%);
+  --highlight-darker: hsl(348, 53%, 44%);
+  --bg-color: white;
+  --footer-bg: lightgray;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --light-text: hsl(74.4deg 28.09% 87.55%);
+    --dim_text: hsl(74.4deg 28.09% 66%);
+    --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+    --highlight-color: hsl(348, 53%, 47%);
+    --highlight-darker: hsl(348, 53%, 44%);
+    --bg-color: hsl(231 27% 15% / 1);
+    --footer-bg: hsl(231 23% 28% / 1);
+  }
+}
+
+html {
+  color-scheme: dark light;
+}
+
+:root:has(#color-theme-selector [value="light"]:checked) {
+  color-scheme: light;
+  --light-text: black;
+  --dim_text: gray;
+  --dimmer-text: hsl(0, 0%, 30%);
+  --highlight-color: hsl(348, 53%, 47%);
+  --highlight-darker: hsl(348, 53%, 44%);
+  --bg-color: white;
+  --footer-bg: lightgray;
+}
+
+:root:has(#color-theme-selector [value="dark"]:checked) {
+  color-scheme: dark;
+  --light-text: hsl(74.4deg 28.09% 87.55%);
+  --dim_text: hsl(74.4deg 28.09% 66%);
+  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+  --highlight-color: hsl(348, 53%, 47%);
+  --highlight-darker: hsl(348, 53%, 44%);
+  --bg-color: hsl(231 27% 15% / 1);
+  --footer-bg: hsl(231 23% 28% / 1);
+}
+
+/* [data-theme='light'] {
+  --light-text: hsl(74.4deg 28.09% 87.55%);
+  --dim_text: hsl(74.4deg 28.09% 66%);
+  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+  --highlight-color: hsl(348, 53%, 47%);
+  --highlight-darker: hsl(348, 53%, 44%);
+  --bg-color: white;
+}
+
+[data-theme='dark'] {
+  --light-text: hsl(74.4deg 28.09% 87.55%);
+  --dim_text: hsl(74.4deg 28.09% 66%);
+  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+  --highlight-color: hsl(348, 53%, 47%);
+  --highlight-darker: hsl(348, 53%, 44%);
+  --bg-color: hsl(231 28% 15% / 1);
+} */
+
+html {
+  color-scheme: dark light;
+}
+
+body {
+  --px: 10rem;
+  --article-card-padding: 1rem;
+  --color-transition: .2s;
+  --nav-height: 110px;
+}

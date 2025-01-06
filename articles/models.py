@@ -47,7 +47,7 @@ class Article(models.Model):
     return self.title
   
   class Meta:
-    ordering = ['pub_date']
+    ordering = ['-pub_date']
 
 class SubscriberEmail(models.Model):
   email = models.EmailField(validators=[MinLengthValidator(6)], max_length=200, unique=True)
