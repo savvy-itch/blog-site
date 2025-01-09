@@ -18,11 +18,11 @@
 {% block content %}
   <div class="article-wrapper">
     <h1>{{ article.title }}</h1>
-    <p>{{ article.pub_date }}</p>
+    <p class="article-details-pub-date">{{ article.pub_date }}</p>
     <p>⏱ <span id="time-to-read"></span> read</p>
     
     {% if article.tags.all %}
-    <ul class="topics-list">
+    <ul class="article-details-topics">
       {% for tag in article.tags.all %}
         <li>
           <button class="tag-btn">{{ tag.name }}</button>
@@ -34,21 +34,28 @@
     {{ article.html_content|safe }}
     
     {% if similar_articles %}
-    <section>
+    <section class="similar-articles-section">
       <h2>You may also find these articles interesting:</h2>
       <div class="similar-articles">
         {% for article in similar_articles %}
         <article class="article-card">
-          <a href="{{ article.get_absolute_url }}" class="article-card-heading">{{ article.title }}</a>
-          {% if article.tags.all %}
-          <ul class="topics-list">
-            {% for tag in article.tags.all %}
-            <li>
-              <button class="tag-btn">{{ tag.name }}</button>
-            </li>
-            {% endfor %}
-          </ul>
-          {% endif %}
+          <a href="{{ article.get_absolute_url }}" class="article-card-link">
+            <img src="https://placehold.co/400x240" alt="" />
+            <h3 class="article-card-heading">{{ article.title }}</h3>
+            <p class="short-desc">short description</p>
+          </a>
+          <div class="article-card-bottom-wrapper">
+            <p class="pub-date-para">{{ article.pub_date }}</p>
+            {% if article.tags.all %}
+            <ul class="topics-list">
+              {% for tag in article.tags.all|slice:":3" %}
+              <li>
+                <button class="tag-btn">{{ tag.name }}</button>
+              </li>
+              {% endfor %}
+            </ul>
+            {% endif %}
+          </div>
         </article>
         {% endfor %}
       </div>

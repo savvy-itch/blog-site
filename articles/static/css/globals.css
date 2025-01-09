@@ -1,22 +1,38 @@
 :root {
-  --light-text: black;
-  --dim_text: gray;
-  --dimmer-text: hsl(0, 0%, 30%);
-  --highlight-color: hsl(348, 53%, 47%);
-  --highlight-darker: hsl(348, 53%, 44%);
-  --bg-color: white;
+  --light-text: hsl(240, 5%, 16%);
+  --dim-text: hsl(192, 9%, 31%);
+  --dimmer-text: hsl(192, 9%, 45%);
+  --highlight-color: hsl(348, 53%, 67%);
+  --highlight-darker: hsl(348, 53%, 58%);
+  --bg-color: hsl(231 27% 94% / 1);
   --footer-bg: lightgray;
+  --btn-bg: hsl(120, 3%, 45%);
+  --article-topics-bg: hsl(230, 28%, 80%);
+  --page-btn-bg: hsl(212, 30%, 58%);
+  --page-btn-border: hsl(212, 30%, 58%);
+  --code-block-bg: lightgray;
+  --code-copy-icon-color: invert(28%) sepia(11%) saturate(459%) hue-rotate(146deg) brightness(100%) contrast(87%);
+  --code-copy-hover: invert(48%) sepia(7%) saturate(654%) hue-rotate(145deg) brightness(92%) contrast(93%);
+  --copy-btn-hover-bg: hsl(231, 22%, 93%);
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
     --light-text: hsl(74.4deg 28.09% 87.55%);
-    --dim_text: hsl(74.4deg 28.09% 66%);
-    --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+    --dim-text: hsl(192, 9%, 71%);
+    --dimmer-text: hsl(192, 9%, 56%);
     --highlight-color: hsl(348, 53%, 47%);
-    --highlight-darker: hsl(348, 53%, 44%);
+    --highlight-darker: hsl(348, 53%, 43%);
     --bg-color: hsl(231 27% 15% / 1);
     --footer-bg: hsl(231 23% 28% / 1);
+    --btn-bg: hsl(120, 3%, 22%);
+    --article-topics-bg: hsl(231 28% 25% / 1);
+    --page-btn-bg: hsl(212, 30%, 26%);
+    --page-btn-border: hsl(192, 9%, 56%);
+    --code-block-bg: hsl(219, 13%, 22%);
+    --code-copy-icon-color: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
+    --code-copy-hover: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
+    --copy-btn-hover-bg: hsl(231 23% 28% / 1);
   }
 }
 
@@ -26,43 +42,41 @@ html {
 
 :root:has(#color-theme-selector [value="light"]:checked) {
   color-scheme: light;
-  --light-text: black;
-  --dim_text: gray;
-  --dimmer-text: hsl(0, 0%, 30%);
-  --highlight-color: hsl(348, 53%, 47%);
-  --highlight-darker: hsl(348, 53%, 44%);
-  --bg-color: white;
+  --light-text: hsl(240, 5%, 16%);
+  --dim-text: hsl(192, 9%, 31%);
+  --dimmer-text: hsl(192, 9%, 45%);
+  --highlight-color: hsl(348, 53%, 67%);
+  --highlight-darker: hsl(348, 53%, 58%);
+  --bg-color: hsl(231 27% 94% / 1);
   --footer-bg: lightgray;
+  --btn-bg: hsl(120, 3%, 45%);
+  --article-topics-bg: #bec2da;
+  --page-btn-bg: hsl(212, 30%, 58%);
+  --page-btn-border: hsl(212, 30%, 58%);
+  --code-block-bg: lightgray;
+  --code-copy-icon-color: invert(28%) sepia(11%) saturate(459%) hue-rotate(146deg) brightness(100%) contrast(87%);;
+  --code-copy-hover: invert(48%) sepia(7%) saturate(654%) hue-rotate(145deg) brightness(92%) contrast(93%);
+  --copy-btn-hover-bg: hsl(231, 22%, 93%);
 }
 
 :root:has(#color-theme-selector [value="dark"]:checked) {
   color-scheme: dark;
   --light-text: hsl(74.4deg 28.09% 87.55%);
-  --dim_text: hsl(74.4deg 28.09% 66%);
-  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
+  --dim-text: hsl(192, 9%, 71%);
+  --dimmer-text: hsl(192, 9%, 56%);
   --highlight-color: hsl(348, 53%, 47%);
-  --highlight-darker: hsl(348, 53%, 44%);
+  --highlight-darker: hsl(348, 53%, 43%);
   --bg-color: hsl(231 27% 15% / 1);
   --footer-bg: hsl(231 23% 28% / 1);
+  --btn-bg: hsl(120, 3%, 22%);
+  --article-topics-bg: hsl(231 28% 25% / 1);
+  --page-btn-bg: hsl(212, 30%, 26%);
+  --page-btn-border: hsl(192, 9%, 56%);
+  --code-block-bg: #31363F;
+  --code-copy-icon-color: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
+  --code-copy-hover: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
+  --copy-btn-hover-bg: hsl(231 23% 28% / 1);
 }
-
-/* [data-theme='light'] {
-  --light-text: hsl(74.4deg 28.09% 87.55%);
-  --dim_text: hsl(74.4deg 28.09% 66%);
-  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
-  --highlight-color: hsl(348, 53%, 47%);
-  --highlight-darker: hsl(348, 53%, 44%);
-  --bg-color: white;
-}
-
-[data-theme='dark'] {
-  --light-text: hsl(74.4deg 28.09% 87.55%);
-  --dim_text: hsl(74.4deg 28.09% 66%);
-  --dimmer-text: hsl(74.4deg 28.09% 56.55%);
-  --highlight-color: hsl(348, 53%, 47%);
-  --highlight-darker: hsl(348, 53%, 44%);
-  --bg-color: hsl(231 28% 15% / 1);
-} */
 
 html {
   color-scheme: dark light;

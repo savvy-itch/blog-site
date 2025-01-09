@@ -1,20 +1,51 @@
 .article-wrapper {
-  /* margin: 0 auto; */
   margin-left: 3rem;
   width: 62%;
   min-width: 60ch;
+}
+
+.article-details-pub-date {
+  color: var(--dim-text);
+  font-size: 1rem;
+  font-style: italic;
+}
+
+.article-details-topics {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: .8rem;
 }
 
 .article-wrapper li {
   list-style-position: inside;
 }
 
-.article-wrapper code {
+.code-block code {
   display: block;
-  background-color: #31363F;
+  background-color: var(--code-block-bg);
+  color: var(--light-text);
   padding: 1.1rem;
   border-radius: 6px;
-  border: 1px solid white;
+  border: 1px solid var(--light-text);
+}
+
+.code-block span {
+  font-family: monospace;
+  font-size: 1rem;
+}
+
+.inline-code {
+  padding: .125rem .25rem;
+  border-radius: .25rem;
+  background-color: var(--footer-bg);
+  color: var(--light-text);
+  font-family: monospace;
+  font-weight: 600;
+}
+
+.article-wrapper h2 {
+  margin: 1.3rem 0;
 }
 
 .article-wrapper table {
@@ -24,16 +55,24 @@
 
 .article-wrapper th,
 .article-wrapper td {
-  border: 1px solid white;
+  border: 1px solid var(--light-text);
   padding: 5px;
 }
 
-.article-wrapper p {
-  margin: 1rem 0;
+.article-wrapper > p,
+.article-wrapper li {
+  line-height: 1.4;
+  overflow-wrap: break-word;
+}
+
+.article-wrapper > p,
+.article-wrapper ul {
+  margin: 1.3rem 0;
 }
 
 .code-block {
   position: relative;
+  margin: 1.3rem 0;
 }
 
 .copy-to-clipboard-btn {
@@ -49,7 +88,7 @@
 
 .copy-to-clipboard-btn:hover {
   cursor: pointer;
-  background-color: hsl(219, 13%, 32%);
+  background-color: var(--copy-btn-hover-bg);
 }
 
 .copy-to-clipboard-btn img {
@@ -59,19 +98,33 @@
 }
 
 .copy-to-clipboard-icon {
-  filter: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
+  filter: var(--code-copy-icon-color);
   transition: transform .1s;
 }
 
 .copy-to-clipboard-btn:hover .copy-to-clipboard-icon {
-  filter: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
+  filter: var(--code-copy-hover);
 }
 
 .copy-to-clipboard-btn .show {
   display: block;
 }
 
+/* ========= Similar Articles ======== */
+.similar-articles-section {
+  margin-top: 4rem;
+}
+
 .similar-articles {
-  display: flex;
-  gap: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+.similar-articles * {
+  margin: 0;
+}
+
+.similar-articles .topics-list {
+  margin: 0;
 }

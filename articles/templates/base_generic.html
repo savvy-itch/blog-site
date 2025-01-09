@@ -61,14 +61,37 @@
     {% block content %}{% endblock %}
   </main>
   <footer class="footer">
-    <h3>Want to get notified when I publish a new article?</h3>
-    <!-- <p>Subscribe to a newsletter!</p> -->
-    <form method="post" id="subscribe-form" class="subscribe-form">
-      {% csrf_token %}
-      {{ email_form }}
-      <input type="submit" value="Subscribe" />
-      <p id="res-msg"></p>
-    </form>
+    <div class="footer-wrapper">
+      <div>
+        <h3>Want to get notified when I publish a new article?</h3>
+        <form method="post" id="subscribe-form" class="subscribe-form">
+          {% csrf_token %}
+          <label for="{{ email_form.email.id_for_label }}">
+            {{ email_form.email.label }}
+          </label>
+          <div class="subscribe-form-input-wrapper">
+            {{ email_form.email }}
+            <input type="submit" class="subscribe-form-submit" value="Subscribe" />
+          </div>
+          <p id="res-msg"></p>
+        </form>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <ul class="contact-links">
+          <li>
+            <a href="#">Github</a>
+          </li>
+          <li>
+            <a href="#">Bluesky</a>
+          </li>
+          <li>
+            <a href="#">Linkedin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <p class="developed-by-para">Developed by Michael Savych</p>
   </footer>
   {% block script %}{% endblock %}
 </body>

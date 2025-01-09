@@ -59,7 +59,6 @@ h1 {
   max-height: calc(100dvh - var(--nav-height));
   border-right: 1px solid var(--light-text);
   padding: 0 2rem 2rem 0;
-  /* margin-top: 2rem; */
   position: sticky;
   top: var(--nav-height);
   background-color: var(--bg-color);
@@ -77,6 +76,7 @@ h1 {
   gap: 8px;
   margin: 7px 0;
   width: fit-content;
+  color: var(--dim-text)
 }
 
 .sidebar label:hover,
@@ -130,7 +130,7 @@ h1 {
 }
 
 .article-card:hover {
-  border: 1px solid hsl(0, 0%, 63%);
+  border: 1px solid var(--dimmer-text);
 }
 
 .article-card-link {
@@ -155,7 +155,7 @@ h1 {
 }
 
 .topics-list {
-  background-color: hsl(231 28% 25% / 1);
+  background-color: var(--article-topics-bg);
   display: flex;
   flex-wrap: wrap;
   list-style: none;
@@ -181,14 +181,64 @@ h1 {
 }
 
 .footer {
-  padding: 4rem var(--px);
+  padding: 4rem var(--px) 1rem var(--px);
   background-color: var(--footer-bg);
+}
+
+.footer h3 {
+  margin-bottom: 1rem;
+}
+
+.footer-wrapper {
+  display: flex;
+  justify-content: space-between;
 }
 
 .subscribe-form {
   margin: 1rem 0;
+}
+
+.subscribe-form-input-wrapper {
   display: flex;
-  gap: 8px;
+  gap: 6px;
+  margin-top: 1rem;
+}
+
+.subscribe-form-input-wrapper input[type="email"] {
+  padding: 8px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: none;
+}
+
+.subscribe-form-submit {
+  padding: 8px;
+  font-size: 1.1rem;
+  border-radius: 4px;
+  border: none;
+  background-color: var(--btn-bg);
+  color: white;
+  border: 1px solid var(--btn-bg);
+  transition: var(--color-transition);
+}
+
+.subscribe-form-submit:hover {
+  cursor: pointer;
+  border: 1px solid white;
+}
+
+.contact-links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  align-items: flex-end;
+}
+
+.developed-by-para {
+  text-align: center;
+  font-size: .8rem;
+  margin-top: 2rem;
 }
 
 @media screen and (max-width: 1600px) {

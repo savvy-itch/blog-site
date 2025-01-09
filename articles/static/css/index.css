@@ -10,14 +10,30 @@
 
 .applied-filters {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
+  list-style: none;
+  margin: 1.5rem 0;
+}
+
+.applied-filters button {
+  font-size: .8rem;
+  font-weight: bold;
+  padding: 5px 9px;
+  border-radius: 20px;
+  border: 1px solid var(--light-text);
+  background-color: transparent;
+  transition: var(--color-transition);
+}
+
+.applied-filters button:hover {
+  cursor: pointer;
+  border: 1px solid var(--dimmer-text);
 }
 
 /* =========== Pagination ============= */
 
 .pagination {
-  --page-btn-bg: hsl(212, 30%, 26%);
-
   width: fit-content;
   display: flex;
   gap: 3px;
@@ -36,6 +52,7 @@
   padding: 6px 10px;
   border-radius: 4px;
   font-size: 1.1rem;
+  color: var(--light-text);
 }
 
 .page-btn,
@@ -44,9 +61,9 @@
 }
 
 .page-btn {
-  border: 1px solid hsl(0, 0%, 63%);
+  border: 1px solid var(--page-btn-border);
 }
 
 .current-page {
-  border: 1px solid white;
+  border: 1px solid var(--light-text);
 }

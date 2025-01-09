@@ -9,6 +9,8 @@ from articles.email import create_unsubscribe_link
 from datetime import timedelta
 from freezegun import freeze_time
 
+# test similar articles display
+
 class FilteredArticlesTest(TestCase):
   @classmethod
   def setUpTestData(cls):

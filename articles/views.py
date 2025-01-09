@@ -30,7 +30,7 @@ class ArticleDetailView(generic.DetailView):
       .exclude(id=current_article.id)
       # count how many matching tags articles have
       .annotate(tag_count=Count('tags', filter=Q(tags__in=current_tags)))
-      .order_by('-tag_count')[:3]
+      .order_by('-tag_count')[:2]
     )
 
     context["similar_articles"] = similar_articles
