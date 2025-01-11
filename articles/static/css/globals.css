@@ -14,6 +14,8 @@
   --code-copy-icon-color: invert(28%) sepia(11%) saturate(459%) hue-rotate(146deg) brightness(100%) contrast(87%);
   --code-copy-hover: invert(48%) sepia(7%) saturate(654%) hue-rotate(145deg) brightness(92%) contrast(93%);
   --copy-btn-hover-bg: hsl(231, 22%, 93%);
+  --link-color: hsl(348, 53%, 46%);
+  --link-hover: hsl(348, 53%, 52%);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -33,6 +35,8 @@
     --code-copy-icon-color: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
     --code-copy-hover: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
     --copy-btn-hover-bg: hsl(231 23% 28% / 1);
+    --link-color: hsl(348, 53%, 58%);
+    --link-hover: hsl(348, 53%, 53%);
   }
 }
 
@@ -57,6 +61,8 @@ html {
   --code-copy-icon-color: invert(28%) sepia(11%) saturate(459%) hue-rotate(146deg) brightness(100%) contrast(87%);;
   --code-copy-hover: invert(48%) sepia(7%) saturate(654%) hue-rotate(145deg) brightness(92%) contrast(93%);
   --copy-btn-hover-bg: hsl(231, 22%, 93%);
+  --link-color: hsl(348, 53%, 46%);
+  --link-hover: hsl(348, 53%, 52%);
 }
 
 :root:has(#color-theme-selector [value="dark"]:checked) {
@@ -76,6 +82,8 @@ html {
   --code-copy-icon-color: invert(98%) sepia(0%) saturate(0%) hue-rotate(156deg) brightness(89%) contrast(88%);
   --code-copy-hover: invert(96%) sepia(4%) saturate(15%) hue-rotate(106deg) brightness(110%) contrast(106%);
   --copy-btn-hover-bg: hsl(231 23% 28% / 1);
+  --link-color: hsl(348, 53%, 58%);
+  --link-hover: hsl(348, 53%, 53%);
 }
 
 html {

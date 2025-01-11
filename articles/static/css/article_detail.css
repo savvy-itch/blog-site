@@ -70,6 +70,22 @@
   margin: 1.3rem 0;
 }
 
+.article-wrapper a {
+  font-weight: 600;
+  color: var(--link-color);
+  transition: color .2s;
+}
+
+.article-wrapper a:hover {
+  color: var(--link-hover);
+}
+
+.article-wrapper p:has(img) {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
 .code-block {
   position: relative;
   margin: 1.3rem 0;
@@ -127,4 +143,90 @@
 
 .similar-articles .topics-list {
   margin: 0;
+}
+
+.share-wrapper {
+  position: relative;
+}
+
+.share-btn {
+  font-size: 1.1rem;
+  font-weight: bold;
+  padding: 7px 12px;
+  border-radius: 20px;
+  border: 1px solid var(--light-text);
+  background-color: transparent;
+  transition: var(--color-transition);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 1.5rem 0;
+}
+
+.share-btn img {
+  width: 1rem;
+  height: 1rem;
+  filter: var(--code-copy-icon-color);
+}
+
+.share-btn:hover {
+  cursor: pointer;
+  border: 1px solid var(--dimmer-text);
+}
+
+.share-wrapper .share-links-list {
+  position: absolute;
+  left: 0;
+  border: 1px solid var(--light-text);
+  border-radius: 5px;
+  margin: 0;
+  background-color: var(--bg-color);
+  padding: 5px;
+  list-style: none;
+  display: none;
+}
+
+.share-links-list.show {
+  display: block;
+}
+
+.share-links-list li {
+  border-radius: 4px;
+}
+
+.share-links-list a,
+.share-links-list button {
+  font-size: 1rem;
+  color: var(--light-text);
+  font-weight: 500;
+  text-decoration: none;
+  width: 100%;
+  padding: 10px 15px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.share-links-list button {
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+}
+
+.share-links-list li:hover,
+.share-links-list button:hover {
+  background-color: var(--footer-bg);
+  cursor: pointer;
+}
+
+.share-links-list a:hover {
+  color: var(--light-text);
+}
+
+.share-links-list a > img,
+.share-links-list button > img {
+  width: 1rem;
+  height: 1rem;
+  filter: var(--code-copy-icon-color);
 }

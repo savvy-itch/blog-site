@@ -45,7 +45,7 @@ function updateURL() {
   }
 
   appliedFilters.forEach(tag => {
-    baseUrl += `${i === 0 ? '' : '&'}tags=${tag}`;
+    baseUrl += `${i === 0 ? '' : '&'}tags=${encodeURIComponent(tag)}`;
     i++;
   });
   return baseUrl;

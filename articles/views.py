@@ -10,10 +10,6 @@ from django.core.signing import TimestampSigner, SignatureExpired
 from django.shortcuts import get_object_or_404
 from django.db.models import Count, Q
 
-# class ArticleListView(generic.ListView):
-#   model = Article
-#   template_name = 'index.html'
-
 class ArticleDetailView(generic.DetailView):
   model = Article
 
@@ -42,6 +38,7 @@ class TagListView(generic.ListView):
 
 def filtered_articles(request):
   filters = request.GET.getlist('tags')
+  print(filters)
   if filters:
     articles = Article.objects.filter(tags__name__in=filters).distinct()
   else:

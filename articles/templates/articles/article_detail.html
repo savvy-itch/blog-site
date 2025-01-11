@@ -12,7 +12,7 @@
   const checkIconPath = "{% static 'images/check.svg' %}";
   const xIconPath = "{% static 'images/x.svg' %}";
 </script>
-<script src="{% static 'js/copyToClipboard.js' %}" defer></script>
+<script src="{% static 'js/articleDetail.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -32,6 +32,44 @@
     {% endif %}
   
     {{ article.html_content|safe }}
+
+    <div id="share=wrapper" class="share-wrapper">
+      <button id="share-btn" class="share-btn">
+        <img src="{% static 'images/share-2.svg' %}" alt="share article">
+        Share
+      </button>
+      <ul id="share-links-list" class="share-links-list">
+        <li>
+          <a href="https://bsky.app/intent/compose?text={{ article.title }}" class="link-elem" title="Share on Bluesky" target="_blank">
+            <img src="{% static 'images/bluesky.svg' %}" alt="bluesky icon" />
+            Bluesky
+          </a>
+        </li>
+        <li>
+          <a href="https://www.facebook.com/sharer/sharer.php?u={{ article.get_absolute_url }}" class="link-elem" title="Share on Facebook" target="_blank">
+            <img src="{% static 'images/facebook.svg' %}" alt="facebook icon" />
+            Facebook
+          </a>
+        </li>
+        <li>
+          <a href="https://www.linkedin.com/shareArticle?url={{ article.get_absolute_url }}&mini=true" class="link-elem" title="Share on LinkedIn" target="_blank">
+            <img src="{% static 'images/linkedin.svg' %}" alt="linkedin icon" />
+            LinkedIn
+          </a>
+        </li>
+        <li>
+          <button 
+            title="Get shareable link" 
+            data-link="{{ article.get_absolute_url }}"
+            id="share-copy-link"
+            class="link-elem"
+          >
+            <img src="{% static 'images/link.svg' %}" alt="copy icon" />
+            <span>Copy Link</span>
+          </button>
+        </li>
+      </ul>
+    </div>
     
     {% if similar_articles %}
     <section class="similar-articles-section">

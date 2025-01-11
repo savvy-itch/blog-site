@@ -1,4 +1,7 @@
 const codeBlocks = document.querySelectorAll('.code-block');
+const shareCopyLinkBtn = document.getElementById('share-copy-link');
+const shareBtn = document.getElementById('share-btn');
+const shareLinkList = document.getElementById('share-links-list');
 
 codeBlocks.forEach(blockElem => {
   const copyBtn = document.createElement('button');
@@ -38,3 +41,32 @@ function animateCopyBtn(copyBtn, copyIcon, statusIcon) {
     copyBtn.removeAttribute('disabled');
   }, 1000);
 }
+
+shareCopyLinkBtn.addEventListener('click', async (e) => {
+  e.stopPropagation();
+  const link = shareCopyLinkBtn.dataset.link;
+  try {
+    await navigator.clipboard.writeText(link);
+    shareCopyLinkBtn.querySelector('span').textContent = 'Copied!';
+  } catch (error) {
+    console.error();
+    shareCopyLinkBtn.querySelector('span').textContent = 'Error';
+  }
+});
+
+shareBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  shareLinkList.classList.toggle('show');
+  shareCopyLinkBtn.querySelector('span').textContent = 'Copy Link';
+});
+
+document.addEventListener('click', (e) => {
+  e.stopPropagation();
+  console.log(e.target);
+  if (!shareLinkList.contains(e.target)
+    && e.target !== shareBtn
+    && shareLinkList.classList.contains('show')) {
+    shareLinkList.classList.remove('show');
+    shareCopyLinkBtn.querySelector('span').textContent = 'Copy Link';
+  }
+});
