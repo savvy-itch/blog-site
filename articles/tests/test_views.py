@@ -29,7 +29,7 @@ class FilteredArticlesTest(TestCase):
     article1 = Article.objects.create(title='Test article 1', pub_date='2024-12-24')
     article2 = Article.objects.create(title='Test article 2', pub_date='2024-11-24')
     article3 = Article.objects.create(title='Test article 3', pub_date='2024-11-25')
-    article4 = Article.objects.create(title='Test article 3', pub_date='2025-01-09')
+    article4 = Article.objects.create(title='Test article 4', pub_date='2025-01-09')
     article1.tags.set([py_tag])
     article2.tags.set([js_tag])
     article3.tags.set([js_tag])

@@ -1,10 +1,11 @@
-{% extends "base_generic.html" %}
+{% extends "base_with_sidebar.html" %}
 
 {% block title %}
 <title>Home | Michael Savych Blog</title>
 {% endblock %}
 
 {% block extra_scripts %}
+{{ block.super }}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
@@ -32,9 +33,9 @@
     {% for article in page_obj %}
     <article class="article-card">
       <a href="{{ article.get_absolute_url }}" class="article-card-link">
-        <img src="https://placehold.co/400x240" alt="" />
+        <img src="{{ article.thumbnail }}" alt="" />
         <h3 class="article-card-heading">{{ article.title }}</h3>
-        <p class="short-desc">short description</p>
+        <p class="short-desc">{{ article.short_desc }}</p>
       </a>
       <div class="article-card-bottom-wrapper">
         <p class="pub-date-para">{{ article.pub_date }}</p>

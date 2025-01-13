@@ -12,9 +12,8 @@
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
   <script src="{% static 'js/main.js' %}" defer></script>
-  <script src="{% static 'js/forms.js' %}" defer></script>
-  {% block extra_scripts %}
-  {% endblock %}
+  <script src="{% static 'js/subscribeForm.js' %}" defer></script>
+  {% block extra_scripts %}{% endblock %}
 </head>
 
 <body>
@@ -28,7 +27,7 @@
           <a href="/">Home</a>
         </li>
         <li>
-          <a href="#">About</a>
+          <a href="{% url 'about' %}">About</a>
         </li>
       </ul>
       <div>
@@ -43,26 +42,11 @@
   </header>
 
   <main class="main-wrapper">
-    <aside class="sidebar">
-      <h4 class="sidebar-heading">Topics</h4>
-      {% if tag_list %}
-      <form action="" method="post" id="filters-form" class="filters-form">
-        {% csrf_token %}
-        {% for tag in tag_list %}
-        <label for="{{ tag.name }}">
-          <input type="checkbox" name="tag-filter" id="{{ tag.name }}" class="filter-checkbox" value="{{ tag.name }}" {% if tag.name in filters %}checked{% endif %} />
-          {{ tag.name }}
-        </label>
-        {% endfor %}
-      </form>
-      {% endif %}
-    </aside>
+    {% block sidebar %}{% endblock %}
 
     {% block content %}{% endblock %}
 
-    <button id="up-btn" class="up-btn">
-      <img src="{% static 'images/arrow-big-up.svg' %}" alt="go up icon">
-    </button>
+    {% block content_table %}{% endblock %}
   </main>
   <footer class="footer">
     <div class="footer-wrapper">

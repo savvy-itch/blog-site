@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block extra_scripts %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/base_with_sidebar.css' %}">
+<script src="{% static 'js/forms.js' %}" defer></script>
+{% endblock %}
+
+{% block sidebar %}
+<aside class="sidebar">
+  <h4 class="sidebar-heading">Topics</h4>
+  {% if tag_list %}
+  <form action="" method="post" id="filters-form" class="filters-form">
+    {% csrf_token %}
+    {% for tag in tag_list %}
+    <label for="{{ tag.name }}">
+      <input type="checkbox" name="tag-filter" id="{{ tag.name }}" class="filter-checkbox" value="{{ tag.name }}" {% if tag.name in filters %}checked{% endif %} />
+      {{ tag.name }}
+    </label>
+    {% endfor %}
+  </form>
+  {% endif %}
+</aside>
+{% endblock %}

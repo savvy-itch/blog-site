@@ -1,10 +1,11 @@
-{% extends "base_generic.html" %}
+{% extends "base_with_sidebar.html" %}
 
 {% block title %}
 <title>{{ article.title }} | Michael Savych Blog</title>
 {% endblock %}
 
 {% block extra_scripts %}
+{{ block.super }}
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/article_detail.css' %}">
 <script>
@@ -16,89 +17,110 @@
 {% endblock %}
 
 {% block content %}
-  <div class="article-wrapper">
-    <h1>{{ article.title }}</h1>
-    <p class="article-details-pub-date">{{ article.pub_date }}</p>
-    <p>⏱ <span id="time-to-read"></span> read</p>
-    
-    {% if article.tags.all %}
-    <ul class="article-details-topics">
-      {% for tag in article.tags.all %}
-        <li>
-          <button class="tag-btn">{{ tag.name }}</button>
-        </li>
-      {% endfor %}
-    </ul>
-    {% endif %}
-  
-    {{ article.html_content|safe }}
+<div class="article-wrapper">
+  <h1>{{ article.title }}</h1>
+  <p class="article-details-pub-date">{{ article.pub_date }}</p>
+  <p>⏱ <span id="time-to-read"></span> read</p>
 
-    <div id="share=wrapper" class="share-wrapper">
-      <button id="share-btn" class="share-btn">
-        <img src="{% static 'images/share-2.svg' %}" alt="share article">
-        Share
-      </button>
-      <ul id="share-links-list" class="share-links-list">
-        <li>
-          <a href="https://bsky.app/intent/compose?text={{ article.title }}" class="link-elem" title="Share on Bluesky" target="_blank">
-            <img src="{% static 'images/bluesky.svg' %}" alt="bluesky icon" />
-            Bluesky
-          </a>
-        </li>
-        <li>
-          <a href="https://www.facebook.com/sharer/sharer.php?u={{ article.get_absolute_url }}" class="link-elem" title="Share on Facebook" target="_blank">
-            <img src="{% static 'images/facebook.svg' %}" alt="facebook icon" />
-            Facebook
-          </a>
-        </li>
-        <li>
-          <a href="https://www.linkedin.com/shareArticle?url={{ article.get_absolute_url }}&mini=true" class="link-elem" title="Share on LinkedIn" target="_blank">
-            <img src="{% static 'images/linkedin.svg' %}" alt="linkedin icon" />
-            LinkedIn
-          </a>
-        </li>
-        <li>
-          <button 
-            title="Get shareable link" 
-            data-link="{{ article.get_absolute_url }}"
-            id="share-copy-link"
-            class="link-elem"
-          >
-            <img src="{% static 'images/link.svg' %}" alt="copy icon" />
-            <span>Copy Link</span>
-          </button>
-        </li>
-      </ul>
-    </div>
-    
-    {% if similar_articles %}
-    <section class="similar-articles-section">
-      <h2>You may also find these articles interesting:</h2>
-      <div class="similar-articles">
-        {% for article in similar_articles %}
-        <article class="article-card">
-          <a href="{{ article.get_absolute_url }}" class="article-card-link">
-            <img src="https://placehold.co/400x240" alt="" />
-            <h3 class="article-card-heading">{{ article.title }}</h3>
-            <p class="short-desc">short description</p>
-          </a>
-          <div class="article-card-bottom-wrapper">
-            <p class="pub-date-para">{{ article.pub_date }}</p>
-            {% if article.tags.all %}
-            <ul class="topics-list">
-              {% for tag in article.tags.all|slice:":3" %}
-              <li>
-                <button class="tag-btn">{{ tag.name }}</button>
-              </li>
-              {% endfor %}
-            </ul>
-            {% endif %}
-          </div>
-        </article>
-        {% endfor %}
-      </div>
-    </section>
-    {% endif %}
+  {% if article.tags.all %}
+  <ul class="article-details-topics">
+    {% for tag in article.tags.all %}
+    <li>
+      <button class="tag-btn">{{ tag.name }}</button>
+    </li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+
+  {{ article.html_content|safe }}
+
+  <div id="share=wrapper" class="share-wrapper">
+    <button id="share-btn" class="share-btn">
+      <img src="{% static 'images/share-2.svg' %}" alt="share article">
+      Share
+    </button>
+    <ul id="share-links-list" class="share-links-list">
+      <li>
+        <a href="https://bsky.app/intent/compose?text={{ article.title }}" class="link-elem" title="Share on Bluesky"
+          target="_blank">
+          <img src="{% static 'images/bluesky.svg' %}" alt="bluesky icon" />
+          Bluesky
+        </a>
+      </li>
+      <li>
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ article.get_absolute_url }}" class="link-elem"
+          title="Share on Facebook" target="_blank">
+          <img src="{% static 'images/facebook.svg' %}" alt="facebook icon" />
+          Facebook
+        </a>
+      </li>
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url={{ article.get_absolute_url }}&mini=true" class="link-elem"
+          title="Share on LinkedIn" target="_blank">
+          <img src="{% static 'images/linkedin.svg' %}" alt="linkedin icon" />
+          LinkedIn
+        </a>
+      </li>
+      <li>
+        <button title="Get shareable link" data-link="{{ article.get_absolute_url }}" id="share-copy-link"
+          class="link-elem">
+          <img src="{% static 'images/link.svg' %}" alt="copy icon" />
+          <span>Copy Link</span>
+        </button>
+      </li>
+    </ul>
   </div>
 
+  {% if similar_articles %}
+  <section class="similar-articles-section">
+    <h2>You may also find these articles interesting:</h2>
+    <div class="similar-articles">
+      {% for article in similar_articles %}
+      <article class="article-card">
+        <a href="{{ article.get_absolute_url }}" class="article-card-link">
+          <img src="{{ article.thumbnail }}" alt="" />
+          <h3 class="article-card-heading">{{ article.title }}</h3>
+          <p class="short-desc">{{ article.short_desc }}</p>
+        </a>
+        <div class="article-card-bottom-wrapper">
+          <p class="pub-date-para">{{ article.pub_date }}</p>
+          {% if article.tags.all %}
+          <ul class="topics-list">
+            {% for tag in article.tags.all|slice:":3" %}
+            <li>
+              <button class="tag-btn">{{ tag.name }}</button>
+            </li>
+            {% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </section>
+  {% endif %}
+</div>
+
+<button id="up-btn" class="up-btn">
+  <img src="{% static 'images/arrow-big-up.svg' %}" alt="go up icon">
+</button>
+{% endblock %}
+
+{% block content_table %}
+<aside class="content-table">
+  <h4 class="sidebar-heading">In this article</h4>
+  <ul>
+    <li><a href="#Intro">Intro</a></li>
+    <li><a href="#Examples">Examples</a>
+      <ul>
+        <li><a href="#HTML">HTML</a></li>
+        <li><a href="#CSS">CSS</a></li>
+        <li><a href="#JavaScript">JavaScript</a></li>
+        <li><a href="#C#">C#</a></li>
+        <li><a href="#Bash">Bash</a></li>
+      </ul>
+    </li>
+    <li><a href="#Conclusion">Conclusion</a></li>
+  </ul>
+</aside>
 {% endblock %}

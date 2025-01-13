@@ -34,7 +34,7 @@ class ArticleDetailView(generic.DetailView):
 
 class TagListView(generic.ListView):
   model = Tag
-  template_name = 'base_generic.html'
+  template_name = 'base_with_sidebar.html'
 
 def filtered_articles(request):
   filters = request.GET.getlist('tags')
@@ -88,3 +88,7 @@ def unsubscribe_from_notifications(request, token):
     return render(request, 'unsubscribe/index.html', {'success_msg': 'You have successfully unsubscribed.'})
   except Exception:
     return render(request, 'unsubscribe/index.html', {'error_msg': 'Email not found.', 'status_code': HTTPStatus.BAD_REQUEST}, status=HTTPStatus.BAD_REQUEST) # 400
+
+
+def about(request):
+  return render(request, 'about/index.html')

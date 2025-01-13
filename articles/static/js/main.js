@@ -1,6 +1,4 @@
 const themePicker = document.getElementById('color-theme-selector');
-const upBtn = document.getElementById('up-btn');
-const windowHeight = window.innerHeight;
 
 document.addEventListener('DOMContentLoaded', () => {
   const article = document.querySelector('.article-wrapper');
@@ -27,22 +25,3 @@ themePicker.addEventListener('change', () => {
     localStorage.setItem('theme', themePicker.value);
   }
 });
-
-upBtn.addEventListener('click', scrollToTop);
-
-function scrollToTop() {
-  window.scrollTo({
-    top: 0,
-    behavior: "smooth"
-  });
-}
-
-window.addEventListener('scroll', handleUpBtnDisplay);
-
-function handleUpBtnDisplay() {
-  if (window.scrollY > windowHeight) {
-    upBtn.classList.add('show-btn');
-  } else {
-    upBtn.classList.remove('show-btn');
-  }
-}

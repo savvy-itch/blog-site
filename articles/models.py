@@ -27,8 +27,10 @@ class Tag(models.Model):
     ]
 
 class Article(models.Model):
-  title = models.CharField(max_length=200)
+  title = models.CharField(max_length=200, unique=True)
   pub_date = models.DateField('date published')
+  short_desc = models.TextField('short description', null=True, max_length=240, validators=[MinLengthValidator(3)])
+  thumbnail = models.URLField('thumbnail', default='https://placehold.co/400x240')
   content = models.TextField(validators=[MinLengthValidator(2)])
   tags = models.ManyToManyField(Tag, help_text="Select tags for this article")
 

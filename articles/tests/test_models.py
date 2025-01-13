@@ -19,7 +19,7 @@ class TagModelTest(TestCase):
 class ArticleModelTest(TestCase):
   @classmethod
   def setUpTestData(cls):
-    Article.objects.create(title='Test article', pub_date='2024-12-24')
+    Article.objects.create(title='Test article', short_desc='qwerrty', pub_date='2024-12-24')
   
   def test_title_label(self):
     article = Article.objects.get(id=1)
@@ -40,6 +40,21 @@ class ArticleModelTest(TestCase):
     article = Article.objects.get(id=1)
     field_label = article._meta.get_field('content').verbose_name
     self.assertEqual(field_label, 'content')
+  
+  def test_short_desc_label(self):
+    article = Article.objects.get(id=1)
+    field_label = article._meta.get_field('short_desc').verbose_name
+    self.assertEqual(field_label, 'short description')
+  
+  def test_short_desc_length(self):
+    article = Article.objects.get(id=1)
+    max_length = article._meta.get_field('short_desc').max_length
+    self.assertEqual(max_length, 240)
+  
+  def test_thumbnail_label(self):
+    article = Article.objects.get(id=1)
+    field_label = article._meta.get_field('thumbnail').verbose_name
+    self.assertEqual(field_label, 'thumbnail')
 
   def test_tags_label(self):
     article = Article.objects.get(id=1)

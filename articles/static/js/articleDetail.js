@@ -2,6 +2,10 @@ const codeBlocks = document.querySelectorAll('.code-block');
 const shareCopyLinkBtn = document.getElementById('share-copy-link');
 const shareBtn = document.getElementById('share-btn');
 const shareLinkList = document.getElementById('share-links-list');
+const upBtn = document.getElementById('up-btn');
+const contentSectionLinks = document.querySelectorAll('.content-table a');
+const sectionHeadings = document.querySelectorAll('.article-subheading');
+const windowHeight = window.innerHeight;
 
 codeBlocks.forEach(blockElem => {
   const copyBtn = document.createElement('button');
@@ -62,7 +66,6 @@ shareBtn.addEventListener('click', (e) => {
 
 document.addEventListener('click', (e) => {
   e.stopPropagation();
-  console.log(e.target);
   if (!shareLinkList.contains(e.target)
     && e.target !== shareBtn
     && shareLinkList.classList.contains('show')) {
@@ -70,3 +73,51 @@ document.addEventListener('click', (e) => {
     shareCopyLinkBtn.querySelector('span').textContent = 'Copy Link';
   }
 });
+
+upBtn.addEventListener('click', scrollToTop);
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+window.addEventListener('scroll', () => {
+  handleUpBtnDisplay();
+});
+
+function handleUpBtnDisplay() {
+  if (window.scrollY > windowHeight) {
+    upBtn.classList.add('show-btn');
+  } else {
+    upBtn.classList.remove('show-btn');
+  }
+}
+
+contentSectionLinks.forEach(link => {
+  link.addEventListener('click', (e) => {
+    e.preventDefault();
+    for (const heading of sectionHeadings) {
+      if (heading.id === link.hash.slice(1)) {
+        heading.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    }
+  });
+});
+
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    const link = document.querySelector(`a[href="#${entry.target.id}"]`);
+    if (entry.isIntersecting) {
+      contentSectionLinks.forEach(link => link.setAttribute('aria-current', 'false'));
+      link.setAttribute('aria-current', 'true');
+    } else {
+      link.setAttribute('aria-current', 'false');
+    }
+  });
+}, { rootMargin: '0% 0% -50% 0%' });
+
+sectionHeadings.forEach(h => {
+  observer.observe(h);
+})

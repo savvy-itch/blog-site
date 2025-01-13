@@ -1,0 +1,38 @@
+.sidebar {
+  width: 15%;
+  max-height: calc(100dvh - var(--nav-height));
+  border-right: 1px solid var(--dimmer-text);
+  padding: 0 2rem 2rem 0;
+  position: sticky;
+  top: var(--nav-height);
+  background-color: var(--bg-color);
+  z-index: 9;
+}
+
+.filters-form {
+  overflow: hidden auto;
+  scrollbar-width: thin;
+  max-height: 50dvh;
+}
+
+.sidebar label {
+  display: flex;
+  gap: 8px;
+  margin: 7px 0;
+  width: fit-content;
+  color: var(--dim-text)
+}
+
+.sidebar label:hover,
+.filter-checkbox:hover {
+  cursor: pointer;
+}
+
+.filter-checkbox {
+  height: 1.2rem;
+  width: 1.2rem;
+}
+
+.sidebar-heading {
+  margin-bottom: 2rem;
+}
