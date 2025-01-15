@@ -32,6 +32,20 @@
   </ul>
   {% endif %}
 
+  <ul class="content-table-list sm-list">
+    <li><a href="#Intro">Intro</a></li>
+    <li><a href="#Examples">Examples</a>
+      <ul>
+        <li><a href="#HTML">HTML</a></li>
+        <li><a href="#CSS">CSS</a></li>
+        <li><a href="#JavaScript">JavaScript</a></li>
+        <li><a href="#C#">C#</a></li>
+        <li><a href="#Bash">Bash</a></li>
+      </ul>
+    </li>
+    <li><a href="#Conclusion">Conclusion</a></li>
+  </ul>
+
   {{ article.html_content|safe }}
 
   <div id="share=wrapper" class="share-wrapper">
@@ -109,7 +123,7 @@
 {% block content_table %}
 <aside class="content-table">
   <h4 class="sidebar-heading">In this article</h4>
-  <ul>
+  <ul class="content-table-list">
     <li><a href="#Intro">Intro</a></li>
     <li><a href="#Examples">Examples</a>
       <ul>

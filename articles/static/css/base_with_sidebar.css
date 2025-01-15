@@ -1,5 +1,6 @@
 .sidebar {
   width: 15%;
+  min-width: 140px;
   max-height: calc(100dvh - var(--nav-height));
   border-right: 1px solid var(--dimmer-text);
   padding: 0 2rem 2rem 0;
@@ -35,4 +36,11 @@
 
 .sidebar-heading {
   margin-bottom: 2rem;
+  font-size: 1.1rem;
+}
+
+@media screen and (max-width: 640px) {
+  .sidebar {
+    padding: 0 1rem 2rem 0;
+  }
 }

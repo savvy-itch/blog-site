@@ -94,5 +94,24 @@ body {
   --px: 10rem;
   --article-card-padding: 1rem;
   --color-transition: .2s;
-  --nav-height: 110px;
+  --nav-height: 100px;
+  --regular-text-size: 1.2rem;
+}
+
+@media screen and (max-width: 1600px) {
+  body {
+    --px: 3rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    --px: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 512px) {
+  body {
+    --px: 1rem;
+  }
 }

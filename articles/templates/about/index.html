@@ -4,6 +4,29 @@
 <title>About | Michael Savych Blog</title>
 {% endblock %}
 
+{% block extra_scripts %}
+{{ block.super }}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+<script src="{% static 'js/about.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
-<h1>About page</h1>
+<div class="about-wrapper">
+  <h1>About me</h1>
+  <p>My name is Michael, and I'm a web developer from Ukraine. I've been programming for <span
+      id="years-of-exp">2.5</span> years, mostly as a hobby. I enjoy reading about people's thought processes when building
+    projects, and that's what I'll be doing as well - share my thoughts and experience in building different projects,
+    discuss specific challenges during development and my ways of overcoming them. My solutions aren't intended to
+    represent the best practices but rather my approach. So, take everything you read here with a grain of salt.
+  </p>
+
+  <p>Outside of programming, I jave a background in mechanical engineering, and I dream of someday bringing these two
+    worlds together to help people improve their learning/working experience in these fields. I'm also a big music geek and a video
+    games enjoyer.</p>
+
+  <p>In this blog, you can expect articles that describe step-by-step my process of building various types of applications,
+    as well as discussions on random programming topics I find interesting. Thank you for stopping by and checking out my blog!
+  </p>
+</div>
 {% endblock %}

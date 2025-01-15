@@ -48,6 +48,10 @@
 }
 
 .article-wrapper h2 {
+  margin: 3rem 0 1.3rem 0;
+}
+
+.article-subheading {
   margin: 1.3rem 0;
 }
 
@@ -64,7 +68,8 @@
 
 .article-wrapper > p,
 .article-wrapper li {
-  line-height: 1.4;
+  line-height: 1.5;
+  font-size: var(--regular-text-size);
   overflow-wrap: break-word;
 }
 
@@ -199,7 +204,7 @@
 
 .share-links-list a,
 .share-links-list button {
-  font-size: 1rem;
+  font-size: var(--regular-text-size);
   color: var(--light-text);
   font-weight: 500;
   text-decoration: none;
@@ -238,7 +243,7 @@
   position: fixed;
   z-index: 100;
   bottom: 5%;
-  right: 5%;
+  right: 10%;
   border-radius: 50%;
   width: 70px;
   height: 70px;
@@ -283,30 +288,39 @@
   z-index: 9;
 }
 
-.content-table ul {
+.content-table-list.sm-list {
+  display: none;
+}
+
+.content-table-list {
   list-style: none;
 }
 
-.content-table li {
+.content-table-list li {
   margin: .5rem 0;
 }
 
-.content-table ul ul {
+.content-table-list ul {
   padding-left: 1.5rem;
+  list-style: none;
 }
 
-.content-table a {
+.content-table-list a {
   color: var(--dim-text);
   transition: color .2s;
   text-decoration: none;
 }
 
-.content-table a:hover {
+.content-table-list a:hover {
   color: var(--dimmer-text);
 }
 
-.content-table a[aria-current=true] {
+.content-table-list a[aria-current=true] {
   color: var(--highlight-color);
+}
+
+.article-img {
+  max-width: 500px;
 }
 
 @keyframes btn-pop-up {
@@ -330,5 +344,48 @@
   }
   100% {
     transform: scale(0);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .main-wrapper {
+    gap: 1rem;
+  }
+
+  .article-wrapper {
+    width: auto;
+    min-width: auto;
+  }
+
+  .content-table {
+    display: none;
+  }
+
+  .content-table-list.sm-list {
+    display: block;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .short-desc {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .similar-articles {
+    grid-template-columns: 1fr;
+  }
+
+  .article-card {
+    max-width: 350px;
+  }
+
+  .article-img {
+    max-width: 90%;
   }
 }
