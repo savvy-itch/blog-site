@@ -9,6 +9,6 @@ jobs:
     - name: Run Django unit tests
       run: |
         pip3 install --user django
-        pip3 install environ
+        pip3 install django-environ
         pip3 install pytest-freezegun
         python3 manage.py test
