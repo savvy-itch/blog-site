@@ -18,6 +18,10 @@
 
 {% block content %}
 <div class="article-wrapper">
+  {% if user.is_authenticated and perms.articles.change_article %}
+  <a href="{% url 'admin:articles_article_change' article.id %}" target="_blank">Edit Article</a>
+  {% endif %}
+
   <h1>{{ article.title }}</h1>
   <p class="article-details-pub-date">{{ article.pub_date }}</p>
   <p>⏱ <span id="time-to-read"></span> read</p>

@@ -4,7 +4,6 @@ from django.urls import reverse
 from django.db.models import UniqueConstraint
 from django.db.models.functions import Lower
 from django.core.validators import MinLengthValidator
-from markdown.extensions.codehilite import CodeHiliteExtension
 
 class Tag(models.Model):
   name = models.CharField(

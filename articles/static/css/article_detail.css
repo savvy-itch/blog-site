@@ -389,3 +389,9 @@
     max-width: 90%;
   }
 }
+
+@media screen and (max-width: 640px) {
+  .article-wrapper {
+    padding-left: 45px;
+  }
+}

@@ -86,7 +86,7 @@
 
 @media screen and (max-width: 640px) {
   .articles-content-wrapper {
-    padding-left: 1rem;
+    padding-left: 45px;
   }
 
   .articles-section {

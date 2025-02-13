@@ -39,8 +39,83 @@
   font-size: 1.1rem;
 }
 
+.sidebar-collapse-btn {
+  display: none;
+}
+
+.overlay {
+  display: none;
+}
+
 @media screen and (max-width: 640px) {
+  .inactive-body {
+    overflow: hidden;
+  }
+
   .sidebar {
-    padding: 0 1rem 2rem 0;
+    width: 45px;
+    min-width: auto;
+    position: fixed;
+    height: 100dvh;
+    left: 0;
+    transition: .2s ease-out;
+    overflow-x: hidden;
+  }
+  
+  .sidebar.show {    
+    width: 50%;
+    max-width: 50vw;
+    padding: 2rem;
+  }
+
+  .sidebar .sidebar-heading {
+    visibility: hidden;
+  }
+
+  .sidebar.show .sidebar-heading {
+    visibility: visible;
+  }
+
+  .sidebar .filters-form {
+    visibility: hidden;
+  }
+
+  .sidebar.show .filters-form {
+    visibility: visible;
+  }
+
+  .sidebar-collapse-btn {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 2%;
+    bottom: 0;
+    padding: 10px;
+    background-color: transparent;
+    border: none;
+  }
+
+  .sidebar-collapse-btn:hover {
+    background-color: var(--code-block-bg);
+  }
+
+  .main-wrapper {
+    justify-content: center;
+  }
+
+  .show-overlay {
+    background-color: black;
+    opacity: .5;
+    width: 100vw;
+    position: fixed;
+    display: block;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  .main-wrapper.show .articles-content-wrapper {
+    filter: blur(2px);
   }
 }

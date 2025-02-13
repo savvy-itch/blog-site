@@ -4,13 +4,14 @@
 {% load static %}
 <link rel="stylesheet" href="{% static 'css/base_with_sidebar.css' %}">
 <script src="{% static 'js/forms.js' %}" defer></script>
+<script src="{% static 'js/sidebar.js' %}" defer></script>
 {% endblock %}
 
 {% block sidebar %}
 <aside class="sidebar">
   <h4 class="sidebar-heading">Topics</h4>
   {% if tag_list %}
-  <form action="" method="post" id="filters-form" class="filters-form">
+  <form method="post" id="filters-form" class="filters-form">
     {% csrf_token %}
     {% for tag in tag_list %}
     <label for="{{ tag.name }}">
@@ -20,5 +21,7 @@
     {% endfor %}
   </form>
   {% endif %}
+  <button id="sidebar-collapse-btn" class="sidebar-collapse-btn" type="button">></button>
 </aside>
+<div class="overlay"></div>
 {% endblock %}

@@ -29,24 +29,39 @@
         <li>
           <a href="{% url 'about' %}">About</a>
         </li>
+        <li>
+          <a href="latest/feed/">RSS</a>
+        </li>
       </ul>
       <div>
-        <select data-theme-picker name="themepicker" id="color-theme-selector">
-          <option value="light"><img src="{% static 'images/sun.svg' %}" alt="light scheme icon"> Light</option>
-          <option value="dark"><img src="{% static 'images/moon.svg' %}" alt="dark scheme icon"> Dark</option>
-          <option value="system"><img src="{% static 'images/system.svg' %}" alt="system scheme icon"> System</option>
+        <select aria-label="Color Theme" data-theme-picker name="themepicker" id="color-theme-selector" class="theme-picker">
+          <option value="light">
+            <!-- <img src="{% static 'images/sun.svg' %}" alt="light scheme icon">  -->
+            ☀ Light
+          </option>
+          <option value="dark">
+            <!-- <img src="{% static 'images/moon.svg' %}" alt="dark scheme icon">  -->
+            🌙 Dark
+          </option>
+          <option value="system">
+            <!-- <img src="{% static 'images/system.svg' %}" alt="system scheme icon">  -->
+            💻 System
+          </option>
         </select>
       </div>
     </nav>
   </header>
 
-  <main class="main-wrapper">
-    {% block sidebar %}{% endblock %}
+  <!-- <div class="overlay"> -->
+    <main class="main-wrapper">
+      {% block sidebar %}{% endblock %}
 
-    {% block content %}{% endblock %}
+      {% block content %}{% endblock %}
 
-    {% block content_table %}{% endblock %}
-  </main>
+      {% block content_table %}{% endblock %}
+    </main>
+  <!-- </div> -->
+    
   <footer class="footer">
     <div class="footer-wrapper">
       <div>
