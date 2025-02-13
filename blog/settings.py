@@ -1,6 +1,5 @@
 import os
 import environ
-import sys
 from pathlib import Path
 
 env = environ.Env(DEBUG=(bool, False))
