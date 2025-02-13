@@ -68,7 +68,7 @@ DATABASES = {
         'USER': env('DB_USER', default='test-db-user'),
         'PASSWORD': env('DB_PASSWORD', default='test-db-pwd'),
         'HOST': env('DB_HOST', default='test-db-host'),
-        'PORT': env('DB_PORT', default='test-db-port')
+        'PORT': env('DB_PORT', default='1234')
     }
 }
 
@@ -115,7 +115,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = env('EMAIL_HOST', default='test-email-host')
-EMAIL_PORT = env('EMAIL_PORT', default='test-email-port')
+EMAIL_PORT = env('EMAIL_PORT', default='123')
 EMAIL_HOST_USER = env('EMAIL_HOST_USER', default='test-email-user')
 EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD', default='test-email-pwd')
 EMAIL_USE_TLS = True
