@@ -120,4 +120,4 @@ const observer = new IntersectionObserver(entries => {
 
 sectionHeadings.forEach(h => {
   observer.observe(h);
-})
+});

@@ -61,8 +61,8 @@
     transition: .2s ease-out;
     overflow-x: hidden;
   }
-  
-  .sidebar.show {    
+
+  .sidebar.show {
     width: 50%;
     max-width: 50vw;
     padding: 2rem;
@@ -117,5 +117,13 @@
 
   .main-wrapper.show .articles-content-wrapper {
     filter: blur(2px);
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .sidebar.show {
+    width: 60%;
+    max-width: 100vw;
+    padding: 2rem;
   }
 }

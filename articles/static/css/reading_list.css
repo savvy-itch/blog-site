@@ -1,0 +1,34 @@
+.saved-articles-section {
+  width: 100%;
+  min-height: 70dvh;
+}
+
+.saved-article {
+  width: 100%;
+  padding: 1rem;
+  margin: .8rem 0;
+  border-radius: 6px;
+  border: 1px solid var(--light-text);
+  transition: border .2s;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+.saved-article:hover {
+  border: 1px solid var(--dimmer-text);
+}
+
+.saved-article-link {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-family: 'Noto Sans Bold', Arial, Helvetica, sans-serif;
+}
+
+.saved-article-desc {
+  padding-top: 1rem;
+  color: var(--dim-text);
+  font-weight: 500;
+}
+

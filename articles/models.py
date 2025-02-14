@@ -31,10 +31,21 @@ class Article(models.Model):
   short_desc = models.TextField('short description', null=True, max_length=240, validators=[MinLengthValidator(3)])
   thumbnail = models.URLField('thumbnail', default='https://placehold.co/400x240')
   content = models.TextField(validators=[MinLengthValidator(2)])
+  table_of_content = models.TextField(validators=[MinLengthValidator(2)], default="""- [Intro](#Intro)
+- [Examples](#Examples)
+    - [HTML](#HTML)
+    - [CSS](#CSS)
+    - [JavaScript](#JavaScript)
+    - [C#](#C#)
+    - [Bash](#Bash)
+- [Conclusion](#Conclusion)""")
   tags = models.ManyToManyField(Tag, help_text="Select tags for this article")
 
   def html_content(self):
     return markdown.markdown(self.content, extensions=['extra', 'fenced_code', 'codehilite'])
+
+  def html_table_content(self):
+    return markdown.markdown(self.table_of_content, extensions=['extra'])
   
   def display_tags(self):
     return ', '.join(tag.name for tag in self.tags.all())

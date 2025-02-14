@@ -33,12 +33,18 @@
     {% for article in page_obj %}
     <article class="article-card">
       <a href="{{ article.get_absolute_url }}" class="article-card-link">
-        <img src="{{ article.thumbnail }}" alt="" />
+        <img src="{{ article.thumbnail }}" alt="{{ article.title }} thumbnail" />
         <h3 class="article-card-heading">{{ article.title }}</h3>
         <p class="short-desc">{{ article.short_desc }}</p>
       </a>
       <div class="article-card-bottom-wrapper">
-        <p class="pub-date-para">{{ article.pub_date }}</p>
+        <div class="article-card-bottom-subwrapper">
+          <p class="pub-date-para">{{ article.pub_date }}</p>
+          <button class="save-btn" data-id="{{ article.id }}" type="button">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-bookmark"><path d="m19 21-7-4-7 4V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16z"/></svg>
+            <span>Save</span>
+          </button>
+        </div>
         {% if article.tags.all %}
         <ul class="topics-list">
           {% for tag in article.tags.all|slice:":3" %}

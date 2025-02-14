@@ -10,7 +10,7 @@ class LatestEntriesFeed(Feed):
   description = "Programming articles, random thoughts and everything in-between"
 
   def items(self):
-    return Article.objects.order_by("-pub_date")[:5]
+    return Article.objects.order_by("-pub_date")[:10]
   
   def item_title(self, item):
     return item.title

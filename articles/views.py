@@ -89,6 +89,19 @@ def unsubscribe_from_notifications(request, token):
   except Exception:
     return render(request, 'unsubscribe/index.html', {'error_msg': 'Email not found.', 'status_code': HTTPStatus.BAD_REQUEST}, status=HTTPStatus.BAD_REQUEST) # 400
 
+def reading_list(request):
+  return render(request, 'reading_list/index.html')
+  
+def get_articles(request):
+  if request.method == 'POST':
+    saved_articles = []
+    data = json.loads(request.body)
+    saved_ids = data.get('ids')
+    print(saved_ids)
+    for id in saved_ids:
+      article = get_object_or_404(Article, id=id)
+      saved_articles.append({ "id": article.id, "title": article.title, "url": article.get_absolute_url(), "desc": article.short_desc })
+    return JsonResponse({ 'saved_articles': saved_articles }, status=HTTPStatus.OK)
 
 def about(request):
   return render(request, 'about/index.html')

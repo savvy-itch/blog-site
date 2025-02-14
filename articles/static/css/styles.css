@@ -78,7 +78,7 @@ nav {
   justify-content: space-between;
 }
 
-nav ul {
+nav > ul {
   list-style: none;
   display: flex;
   gap: 30px;
@@ -165,11 +165,17 @@ h1 {
   justify-content: space-between;
 }
 
+.article-card-bottom-subwrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 var(--article-card-padding) 1rem var(--article-card-padding);
+}
+
 .pub-date-para {
   color: var(--dimmer-text);
   font-size: .83rem;
   font-style: italic;
-  padding: 0 var(--article-card-padding) 1rem var(--article-card-padding);
 }
 
 .topics-list {
@@ -259,6 +265,23 @@ h1 {
   margin-top: 2rem;
 }
 
+.save-btn {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 1rem;
+  background-color: transparent;
+  border: none;
+}
+
+.save-btn:hover {
+  cursor: pointer;
+  background-color: var(--page-btn-border);
+}
+
 @media screen and (max-width: 640px) {
   .footer {
     padding: 2rem var(--px) 1rem calc(45px + var(--px));
@@ -279,5 +302,21 @@ h1 {
 
   .contact-links {
     align-items: center;
+  }
+}
+
+@media screen and (max-width: 520px) {
+  .header {
+    padding: 1rem;
+  }
+
+  nav {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  nav > ul {
+    width: 100%;
+    justify-content: space-between;
   }
 }

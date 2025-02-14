@@ -11,7 +11,7 @@
   <link rel="stylesheet" href="{% static 'css/globals.css' %}">
   <link rel="stylesheet" href="{% static 'css/styles.css' %}">
   <link rel="stylesheet" href="{% static 'css/pygments.css' %}">
-  <script src="{% static 'js/main.js' %}" defer></script>
+  <script src="{% static 'js/main.js' %}" type="module" defer></script>
   <script src="{% static 'js/subscribeForm.js' %}" defer></script>
   {% block extra_scripts %}{% endblock %}
 </head>
@@ -30,38 +30,50 @@
           <a href="{% url 'about' %}">About</a>
         </li>
         <li>
-          <a href="latest/feed/">RSS</a>
+          <a href="{% url 'reading_list' %}" title="Saved Articles">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-book-marked">
+              <path d="M10 2v8l3-3 3 3V2" />
+              <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20" />
+            </svg>
+          </a>
+        </li>
+        <li>
+          <a href="{% url 'rss' %}" target="_blank" title="RSS">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+              class="lucide lucide-rss">
+              <path d="M4 11a9 9 0 0 1 9 9" />
+              <path d="M4 4a16 16 0 0 1 16 16" />
+              <circle cx="5" cy="19" r="1" />
+            </svg>
+          </a>
         </li>
       </ul>
-      <div>
-        <select aria-label="Color Theme" data-theme-picker name="themepicker" id="color-theme-selector" class="theme-picker">
-          <option value="light">
-            <!-- <img src="{% static 'images/sun.svg' %}" alt="light scheme icon">  -->
-            ☀ Light
-          </option>
-          <option value="dark">
-            <!-- <img src="{% static 'images/moon.svg' %}" alt="dark scheme icon">  -->
-            🌙 Dark
-          </option>
-          <option value="system">
-            <!-- <img src="{% static 'images/system.svg' %}" alt="system scheme icon">  -->
-            💻 System
-          </option>
-        </select>
-      </div>
+      <select aria-label="Color Theme" data-theme-picker name="themepicker" id="color-theme-selector"
+        class="theme-picker">
+        <option value="light">
+          ☀ Light
+        </option>
+        <option value="dark">
+          🌙 Dark
+        </option>
+        <option value="system">
+          💻 System
+        </option>
+      </select>
     </nav>
   </header>
 
-  <!-- <div class="overlay"> -->
-    <main class="main-wrapper">
-      {% block sidebar %}{% endblock %}
+  <main class="main-wrapper">
+    {% block sidebar %}{% endblock %}
 
-      {% block content %}{% endblock %}
+    {% block content %}{% endblock %}
 
-      {% block content_table %}{% endblock %}
-    </main>
-  <!-- </div> -->
-    
+    {% block content_table %}{% endblock %}
+  </main>
+
   <footer class="footer">
     <div class="footer-wrapper">
       <div>
@@ -82,13 +94,13 @@
         <h3>Contact</h3>
         <ul class="contact-links">
           <li>
-            <a href="#">Github</a>
+            <a href="https://github.com/savvy-itch" target="_blank">Github</a>
           </li>
           <li>
-            <a href="#">Bluesky</a>
+            <a href="https://bsky.app/profile/savvy-itch.bsky.social" target="_blank">Bluesky</a>
           </li>
           <li>
-            <a href="#">Linkedin</a>
+            <a href="https://www.linkedin.com/in/mykhailo-savych-a31366248/" target="_blank">Linkedin</a>
           </li>
         </ul>
       </div>
