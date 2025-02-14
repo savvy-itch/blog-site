@@ -23,16 +23,6 @@ Other small UX feature includes "Go Up" button when the page gets too long. It o
 
 The blog adheres to best practices such as test-driven development. The application is thoroughly tested using `unittest`. Furthermore, as shown in a lecture, I implemented GitHub action to run unit test on every code push.
 
-+ estimated read time
-+ admin-only article edit button
-+ share button
-+ similar articles 
-+ email subscription
-+ go up button
-+ RSS feed
-+ unit testing
-+ GitHub actions
-
 ## Structure
 
 `.github/workflows/ci.yml` - contains jobs for GitHub Actions, namely unit testing on every code push.
