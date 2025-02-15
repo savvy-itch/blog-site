@@ -29,7 +29,7 @@ themePicker.addEventListener('change', () => {
 const saveBtns = document.querySelectorAll('.save-btn');
 
 document.addEventListener('DOMContentLoaded', () => {
-  const savedArticles = JSON.parse(localStorage.getItem('saved-articles'));
+  const savedArticles = JSON.parse(localStorage.getItem('saved-articles')) ?? [];
   saveBtns.forEach(btn => {
     const isSaved = savedArticles.some(el => el === btn.dataset.id);
       if (isSaved) {

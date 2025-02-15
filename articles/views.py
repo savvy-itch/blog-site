@@ -1,4 +1,5 @@
 import json
+import urllib.parse
 from django.shortcuts import render
 from django.views import generic
 from .models import Article, Tag, SubscriberEmail
@@ -38,7 +39,6 @@ class TagListView(generic.ListView):
 
 def filtered_articles(request):
   filters = request.GET.getlist('tags')
-  print(filters)
   if filters:
     articles = Article.objects.filter(tags__name__in=filters).distinct()
   else:
@@ -49,7 +49,7 @@ def filtered_articles(request):
   page_obj = paginator.get_page(page_number)
   filters_url_params = ''
   for filter in filters:
-    filters_url_params += f"&tags={filter}"
+    filters_url_params += f"&tags={urllib.parse.quote(filter)}"
   
   return render(request, 'index.html', {
     'articles': articles, 
@@ -97,7 +97,6 @@ def get_articles(request):
     saved_articles = []
     data = json.loads(request.body)
     saved_ids = data.get('ids')
-    print(saved_ids)
     for id in saved_ids:
       article = get_object_or_404(Article, id=id)
       saved_articles.append({ "id": article.id, "title": article.title, "url": article.get_absolute_url(), "desc": article.short_desc })
