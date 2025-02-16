@@ -5,8 +5,15 @@ jobs:
   test_project:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v2
-    - name: Run Django unit tests
+    - uses: actions/checkout@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: 'pip'
+    - name: Install dependencies
       run: |
-        pip3 install -r requirements.txt
-        python3 manage.py test
+        python3 -m pip install --upgrade pip
+        pip install Django asgiref sqlparse django-environ freezegun aiosmtpd python-dateutil six
+    - name: Run Django unit tests
+      run: python3 manage.py test
