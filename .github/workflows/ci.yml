@@ -14,6 +14,6 @@ jobs:
     - name: Install dependencies
       run: |
         python3 -m pip install --upgrade pip
-        pip install Django asgiref sqlparse django-environ freezegun aiosmtpd python-dateutil six
+        pip3 install -r requirements.txt
     - name: Run Django unit tests
       run: python3 manage.py test
